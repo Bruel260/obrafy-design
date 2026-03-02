@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obrafy — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #EA580C;
+    --primary-light: #FB923C;
+    --primary-dark: #C2410C;
+    --primary-surface: #FFF7ED;
+    --secondary: #292524;
+    --bg: #FAFAF9;
+    --surface: #FFFFFF;
+    --surface-alt: #F5F5F4;
+    --border: #D6D3D1;
+    --text: #1C1917;
+    --text-secondary: #78716C;
+    --success: #16A34A;
+    --warning: #EAB308;
+    --danger: #DC2626;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #0F0F0F;
+    color: #fff;
+  }
+
+  /* --- SLIDES --- */
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #222;
+    position: relative;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+  }
+
+  .slide-tag {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ccc;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    color: #999;
+    line-height: 1.5;
+    max-width: 700px;
+  }
+
+  .accent { color: var(--primary); }
+
+  /* --- COVER --- */
+  .cover {
+    text-align: center;
+    align-items: center;
+  }
+  .cover h1 { font-size: 72px; }
+  .cover .logo-icon {
+    width: 80px; height: 80px;
+    background: var(--primary);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; color: #fff;
+    margin-bottom: 32px;
+  }
+
+  /* --- COLOR GRID --- */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .color-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+  }
+
+  .color-swatch {
+    height: 100px;
+    width: 100%;
+  }
+
+  .color-info {
+    padding: 14px 16px;
+  }
+
+  .color-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .color-hex {
+    font-size: 13px;
+    color: #888;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .color-use {
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+  }
+
+  /* --- ORANGE SCALE --- */
+  .orange-scale {
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 24px 0;
+    height: 120px;
+  }
+
+  .orange-scale div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .orange-scale .os-label {
+    font-size: 11px;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* --- COMPONENTS --- */
+  .components-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    align-items: flex-start;
+  }
+
+  .component-box {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid #2a2a2a;
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .component-box h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  /* Buttons demo */
+  .btn-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    transition: all 0.15s;
+  }
+
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-light); }
+  .btn-secondary { background: transparent; border: 2px solid var(--border); color: var(--text); }
+  .btn-danger { background: var(--danger); color: #fff; }
+  .btn-ghost { background: transparent; color: var(--primary); }
+
+  /* Cards demo */
+  .card-demo {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    color: var(--text);
+  }
+
+  .card-demo .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .card-demo .card-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text);
+  }
+
+  .card-demo .card-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .card-demo .card-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .badge-success { background: #dcfce7; color: #15803d; }
+  .badge-warning { background: #fef9c3; color: #a16207; }
+  .badge-danger { background: #fef2f2; color: #b91c1c; }
+  .badge-primary { background: var(--primary-surface); color: var(--primary); }
+
+  /* Inputs demo */
+  .input-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .input-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .input-field {
+    height: 48px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    padding: 0 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s;
+  }
+
+  .input-field:focus { border-color: var(--primary); border-width: 2px; }
+  .input-field.error { border-color: var(--danger); border-width: 2px; }
+
+  .input-caption {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .input-caption.error { color: var(--danger); }
+
+  /* Semaforo */
+  .semaforo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 24px;
+  }
+
+  .semaforo-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border-radius: 16px;
+    border-left: 4px solid;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+
+  .semaforo-card .s-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .semaforo-card .s-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+
+  .semaforo-card .s-count {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .semaforo-card .s-amount {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  /* --- TYPOGRAPHY --- */
+  .type-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #1a1a1a;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+  }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    padding: 20px 28px;
+    border-bottom: 1px solid #222;
+    gap: 24px;
+  }
+
+  .type-row:last-child { border-bottom: none; }
+
+  .type-sample { flex: 1; }
+
+  .type-meta {
+    font-size: 12px;
+    color: #555;
+    font-family: 'SF Mono', monospace;
+    white-space: nowrap;
+    min-width: 180px;
+    text-align: right;
+  }
+
+  /* --- RADIUS DEMO --- */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .radius-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .radius-shape {
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .radius-label {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+  }
+
+  .radius-value {
+    font-size: 12px;
+    color: #555;
+    font-family: 'SF Mono', monospace;
+  }
+
+  /* --- SHADOW DEMO --- */
+  .shadow-grid {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .shadow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .shadow-box {
+    width: 140px;
+    height: 90px;
+    background: var(--surface);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .shadow-label {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+  }
+
+  /* --- MOCKUP --- */
+  .phone-frame {
+    width: 375px;
+    background: var(--bg);
+    border-radius: 40px;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    margin: 0 auto;
+  }
+
+  .phone-header {
+    background: var(--primary);
+    padding: 50px 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+  }
+
+  .phone-header .ph-logo {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .phone-header .ph-company {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .phone-header .ph-bell {
+    font-size: 20px;
+    opacity: 0.9;
+  }
+
+  .phone-body {
+    padding: 20px 16px;
+  }
+
+  .phone-body h2 {
+    font-size: 24px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .phone-body .mini-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .phone-body .mini-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .phone-body .mini-label {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .phone-body .mini-amount {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .phone-body .mini-btn {
+    width: 100%;
+    height: 52px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+
+  .phone-tabbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 28px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .phone-tabbar .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-secondary);
+    gap: 4px;
+  }
+
+  .phone-tabbar .tab.active { color: var(--primary); }
+
+  .phone-tabbar .tab-icon {
+    font-size: 20px;
+  }
+
+  .phone-tabbar .tab-fab {
+    width: 52px; height: 52px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 28px;
+    margin-top: -30px;
+    box-shadow: 0 4px 12px rgba(234,88,12,0.4);
+  }
+
+  /* --- LOGO SECTION --- */
+  .logo-variants {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .logo-variant {
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 220px;
+    flex: 1;
+  }
+
+  .logo-variant .logo-text {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .logo-variant .logo-sub {
+    font-size: 12px;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* --- SPACING --- */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .spacing-bar {
+    height: 24px;
+    background: var(--primary);
+    border-radius: 4px;
+    opacity: 0.7;
+  }
+
+  .spacing-label {
+    font-size: 12px;
+    color: #666;
+    font-family: 'SF Mono', monospace;
+    min-width: 50px;
+  }
+
+  /* --- DARK MODE SECTION --- */
+  .dark-preview {
+    background: #1C1917;
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 16px;
+  }
+
+  .dark-preview .dp-card {
+    background: #292524;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+    border: 1px solid #57534E;
+  }
+
+  .dark-preview .dp-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FAFAF9;
+    margin-bottom: 4px;
+  }
+
+  .dark-preview .dp-sub {
+    font-size: 14px;
+    color: #A8A29E;
+  }
+
+  .dark-preview .dp-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FB923C;
+    margin-top: 8px;
+  }
+
+  .dark-preview .dp-btn {
+    width: 100%;
+    height: 52px;
+    background: #FB923C;
+    color: #1C1917;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .two-col { grid-template-columns: 1fr; }
+    .phone-frame { width: 100%; max-width: 375px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Cover -->
+<section class="slide cover">
+  <span class="slide-number">01</span>
+  <div class="logo-icon">O</div>
+  <h1>Obrafy<br><span class="accent">Design System</span></h1>
+  <p class="subtitle">Guia visual para desarrollo. Naranja obra, tipografia Inter, componentes redondeados.</p>
+</section>
+
+<!-- SLIDE 2: Paleta principal -->
+<section class="slide">
+  <span class="slide-number">02</span>
+  <div class="slide-tag">Colores</div>
+  <h2>Escala de naranjas</h2>
+  <p class="subtitle" style="margin-bottom:32px;">El naranja es el color protagonista. Cuatro niveles de intensidad.</p>
+
+  <div class="orange-scale">
+    <div style="background:#C2410C; color:#fff;">
+      <span class="os-label">Dark</span>
+      #C2410C
+    </div>
+    <div style="background:#EA580C; color:#fff;">
+      <span class="os-label">Primary</span>
+      #EA580C
+    </div>
+    <div style="background:#FB923C; color:#fff;">
+      <span class="os-label">Light</span>
+      #FB923C
+    </div>
+    <div style="background:#FFF7ED; color:#92400E;">
+      <span class="os-label">Surface</span>
+      #FFF7ED
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px;">Paleta completa — Light Mode</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#EA580C;"></div>
+      <div class="color-info">
+        <div class="color-name">Primary</div>
+        <div class="color-hex">#EA580C</div>
+        <div class="color-use">Botones, headers, CTAs</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FB923C;"></div>
+      <div class="color-info">
+        <div class="color-name">Primary Light</div>
+        <div class="color-hex">#FB923C</div>
+        <div class="color-use">Hover, badges</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C2410C;"></div>
+      <div class="color-info">
+        <div class="color-name">Primary Dark</div>
+        <div class="color-hex">#C2410C</div>
+        <div class="color-use">Pressed, bordes</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFF7ED;"></div>
+      <div class="color-info">
+        <div class="color-name">Primary Surface</div>
+        <div class="color-hex">#FFF7ED</div>
+        <div class="color-use">Fondos suaves, alertas</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#292524;"></div>
+      <div class="color-info">
+        <div class="color-name">Secondary</div>
+        <div class="color-hex">#292524</div>
+        <div class="color-use">Iconos, texto boton sec.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FAFAF9;"></div>
+      <div class="color-info">
+        <div class="color-name">Background</div>
+        <div class="color-hex">#FAFAF9</div>
+        <div class="color-use">Fondo general</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFFFFF; border-bottom:1px solid #eee;"></div>
+      <div class="color-info">
+        <div class="color-name">Surface</div>
+        <div class="color-hex">#FFFFFF</div>
+        <div class="color-use">Cards, modales, inputs</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#D6D3D1;"></div>
+      <div class="color-info">
+        <div class="color-name">Border</div>
+        <div class="color-hex">#D6D3D1</div>
+        <div class="color-use">Bordes, separadores</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#1C1917;"></div>
+      <div class="color-info">
+        <div class="color-name">Text</div>
+        <div class="color-hex">#1C1917</div>
+        <div class="color-use">Texto principal</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#78716C;"></div>
+      <div class="color-info">
+        <div class="color-name">Text Secondary</div>
+        <div class="color-hex">#78716C</div>
+        <div class="color-use">Labels, placeholders</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#16A34A;"></div>
+      <div class="color-info">
+        <div class="color-name">Success</div>
+        <div class="color-hex">#16A34A</div>
+        <div class="color-use">Cobrado, validado</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#EAB308;"></div>
+      <div class="color-info">
+        <div class="color-name">Warning</div>
+        <div class="color-hex">#EAB308</div>
+        <div class="color-use">Pendiente, alerta</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#DC2626;"></div>
+      <div class="color-info">
+        <div class="color-name">Danger</div>
+        <div class="color-hex">#DC2626</div>
+        <div class="color-use">Error, vencido</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: Dark Mode -->
+<section class="slide">
+  <span class="slide-number">03</span>
+  <div class="slide-tag">Colores</div>
+  <h2>Dark Mode</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>Paleta dark</h3>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#FB923C;"></div>
+          <div class="color-info">
+            <div class="color-name">Primary</div>
+            <div class="color-hex">#FB923C</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#FDBA74;"></div>
+          <div class="color-info">
+            <div class="color-name">Primary Light</div>
+            <div class="color-hex">#FDBA74</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#431407;"></div>
+          <div class="color-info">
+            <div class="color-name">Primary Surface</div>
+            <div class="color-hex">#431407</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#1C1917;"></div>
+          <div class="color-info">
+            <div class="color-name">Background</div>
+            <div class="color-hex">#1C1917</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#292524;"></div>
+          <div class="color-info">
+            <div class="color-name">Surface</div>
+            <div class="color-hex">#292524</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#57534E;"></div>
+          <div class="color-info">
+            <div class="color-name">Border</div>
+            <div class="color-hex">#57534E</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Preview</h3>
+      <div class="dark-preview">
+        <div class="dp-card">
+          <div class="dp-title">Reforma bano Familia Lopez</div>
+          <div class="dp-sub">Enviado hace 3 dias</div>
+          <div class="dp-amount">4.850,00 EUR</div>
+        </div>
+        <div class="dp-card">
+          <div class="dp-title">Pintura exterior nave</div>
+          <div class="dp-sub">Borrador</div>
+          <div class="dp-amount">2.100,00 EUR</div>
+        </div>
+        <div class="dp-btn">Crear presupuesto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: Tipografia -->
+<section class="slide">
+  <span class="slide-number">04</span>
+  <div class="slide-tag">Tipografia</div>
+  <h2>Inter — Escala de texto</h2>
+  <p class="subtitle" style="margin-bottom:32px;">Sans-serif variable. Fallback: system-ui. Web: @fontsource/inter | App: expo-google-fonts/inter</p>
+
+  <div class="type-stack">
+    <div class="type-row">
+      <div class="type-sample" style="font-size:28px; font-weight:700;">Presupuestos</div>
+      <div class="type-meta">H1 — 28px Bold 700</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:22px; font-weight:600;">Presupuestos activos</div>
+      <div class="type-meta">H2 — 22px SemiBold 600</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:18px; font-weight:600;">Reforma integral planta baja</div>
+      <div class="type-meta">H3 — 18px SemiBold 600</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:16px; font-weight:400;">Incluye albanileria, fontaneria y electricidad completa del inmueble.</div>
+      <div class="type-meta">Body — 16px Regular 400</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:14px; font-weight:400; color:#999;">Enviado el 15 de febrero de 2026</div>
+      <div class="type-meta">Small — 14px Regular 400</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:12px; font-weight:400; color:#666;">IVA incluido en todos los importes</div>
+      <div class="type-meta">Caption — 12px Regular 400</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: Componentes - Botones e Inputs -->
+<section class="slide">
+  <span class="slide-number">05</span>
+  <div class="slide-tag">Componentes</div>
+  <h2>Botones e Inputs</h2>
+
+  <div class="components-row">
+    <div class="component-box">
+      <h4>Botones — h:56px, radius:12px</h4>
+      <div class="btn-demo">
+        <button class="btn btn-primary">Crear presupuesto</button>
+        <button class="btn btn-secondary">Enviar por WhatsApp</button>
+        <button class="btn btn-danger">Eliminar factura</button>
+        <button class="btn btn-ghost">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="component-box" style="background:var(--bg);">
+      <h4 style="color:var(--text-secondary);">Inputs — h:48px, radius:10px</h4>
+      <div class="input-demo">
+        <label class="input-label">Nombre del cliente</label>
+        <input class="input-field" type="text" value="Miguel Fernandez" />
+        <span class="input-caption">Nombre y apellidos completos</span>
+      </div>
+      <div class="input-demo" style="margin-top:20px;">
+        <label class="input-label">Email *</label>
+        <input class="input-field error" type="text" placeholder="email@ejemplo.com" />
+        <span class="input-caption error">El email es obligatorio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: Badges + Cards + Semaforo -->
+<section class="slide">
+  <span class="slide-number">06</span>
+  <div class="slide-tag">Componentes</div>
+  <h2>Badges, Cards y Semaforo de cobros</h2>
+
+  <div class="components-row">
+    <div class="component-box">
+      <h4>Badges — radius: 999px (pildora)</h4>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;">
+        <span class="badge badge-success">Cobrado</span>
+        <span class="badge badge-warning">Pendiente</span>
+        <span class="badge badge-danger">Vencido</span>
+        <span class="badge badge-primary">Enviado</span>
+      </div>
+
+      <h4>Card presupuesto — radius: 16px</h4>
+      <div class="card-demo">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Reforma bano Familia Lopez</div>
+            <div class="card-sub">Enviado hace 3 dias</div>
+          </div>
+          <span class="badge badge-primary">Enviado</span>
+        </div>
+        <div class="card-amount">4.850,00 EUR</div>
+      </div>
+    </div>
+
+    <div class="component-box" style="background:transparent; border:none; padding:0;">
+      <h4>Semaforo de cobros — pantalla Home</h4>
+      <div class="semaforo">
+        <div class="semaforo-card" style="border-color:#DC2626;">
+          <div class="s-dot" style="background:#DC2626;"></div>
+          <div class="s-label">Vencidas</div>
+          <div class="s-count">3</div>
+          <div class="s-amount" style="color:#DC2626;">2.400 EUR</div>
+        </div>
+        <div class="semaforo-card" style="border-color:#EAB308;">
+          <div class="s-dot" style="background:#EAB308;"></div>
+          <div class="s-label">Pendientes</div>
+          <div class="s-count">5</div>
+          <div class="s-amount" style="color:#EAB308;">8.100 EUR</div>
+        </div>
+        <div class="semaforo-card" style="border-color:#16A34A;">
+          <div class="s-dot" style="background:#16A34A;"></div>
+          <div class="s-label">Cobradas</div>
+          <div class="s-count">12</div>
+          <div class="s-amount" style="color:#16A34A;">24.350 EUR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: Border Radius + Shadows -->
+<section class="slide">
+  <span class="slide-number">07</span>
+  <div class="slide-tag">Formas</div>
+  <h2>Border Radius y Sombras</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>Radius por componente</h3>
+      <div class="radius-grid">
+        <div class="radius-item">
+          <div class="radius-shape" style="width:160px; height:56px; border-radius:12px;">Boton</div>
+          <div class="radius-value">12px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="width:160px; height:100px; border-radius:16px;">Card</div>
+          <div class="radius-value">16px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="width:160px; height:48px; border-radius:10px;">Input</div>
+          <div class="radius-value">10px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="width:160px; height:100px; border-radius:20px;">Modal</div>
+          <div class="radius-value">20px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="width:110px; height:32px; border-radius:999px;">Badge</div>
+          <div class="radius-value">999px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-shape" style="width:48px; height:48px; border-radius:999px;">MF</div>
+          <div class="radius-value">999px</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Niveles de sombra</h3>
+      <div class="shadow-grid">
+        <div class="shadow-item">
+          <div class="shadow-box" style="box-shadow: 0 1px 2px rgba(0,0,0,0.06);">sm</div>
+          <div class="shadow-label">Inputs, chips<br><code style="font-size:11px;color:#555;">0 1px 2px</code></div>
+        </div>
+        <div class="shadow-item">
+          <div class="shadow-box" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08);">md</div>
+          <div class="shadow-label">Cards, dropdowns<br><code style="font-size:11px;color:#555;">0 4px 12px</code></div>
+        </div>
+        <div class="shadow-item">
+          <div class="shadow-box" style="box-shadow: 0 8px 24px rgba(0,0,0,0.12);">lg</div>
+          <div class="shadow-label">Modales, popovers<br><code style="font-size:11px;color:#555;">0 8px 24px</code></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:40px;">Espaciado — base 4px</h3>
+      <div>
+        <div class="spacing-row"><div class="spacing-label">4px</div><div class="spacing-bar" style="width:16px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">8px</div><div class="spacing-bar" style="width:32px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">12px</div><div class="spacing-bar" style="width:48px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">16px</div><div class="spacing-bar" style="width:64px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">24px</div><div class="spacing-bar" style="width:96px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">32px</div><div class="spacing-bar" style="width:128px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">48px</div><div class="spacing-bar" style="width:192px;"></div></div>
+        <div class="spacing-row"><div class="spacing-label">64px</div><div class="spacing-bar" style="width:256px;"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: Logo -->
+<section class="slide">
+  <span class="slide-number">08</span>
+  <div class="slide-tag">Marca</div>
+  <h2>Logo — Obrafy</h2>
+  <p class="subtitle" style="margin-bottom:32px;">Variantes: logo completo (icono + texto), icono solo, texto solo. Formatos: SVG (web) + PNG @1x @2x @3x (app).</p>
+
+  <div class="logo-variants">
+    <div class="logo-variant" style="background:var(--surface);">
+      <div style="width:56px;height:56px;background:var(--primary);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;">O</div>
+      <div class="logo-text" style="color:var(--text);">Obra<span style="color:var(--primary);">fy</span></div>
+      <div class="logo-sub" style="color:var(--text-secondary);">Sobre fondo claro</div>
+    </div>
+    <div class="logo-variant" style="background:var(--secondary);">
+      <div style="width:56px;height:56px;background:var(--primary);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;">O</div>
+      <div class="logo-text" style="color:#FAFAF9;">Obra<span style="color:var(--primary-light);">fy</span></div>
+      <div class="logo-sub" style="color:#A8A29E;">Sobre fondo oscuro</div>
+    </div>
+    <div class="logo-variant" style="background:var(--primary);">
+      <div style="width:56px;height:56px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:28px;font-weight:700;">O</div>
+      <div class="logo-text" style="color:#fff;">Obra<span style="color:#FFF7ED;">fy</span></div>
+      <div class="logo-sub" style="color:rgba(255,255,255,0.6);">Sobre fondo naranja</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px; padding:20px 28px; background:#1a1a1a; border-radius:16px; border:1px solid #2a2a2a; display:inline-flex; gap:32px; flex-wrap:wrap;">
+    <div><span style="color:#666;font-size:13px;">Espacio seguro</span><br><span style="font-size:14px;">Min 1/4 del ancho</span></div>
+    <div><span style="color:#666;font-size:13px;">Tamano min icono</span><br><span style="font-size:14px;">32px alto</span></div>
+    <div><span style="color:#666;font-size:13px;">Tamano min completo</span><br><span style="font-size:14px;">120px ancho</span></div>
+  </div>
+</section>
+
+<!-- SLIDE 9: Mockup completo -->
+<section class="slide" style="align-items:center;">
+  <span class="slide-number">09</span>
+  <div class="slide-tag">Mockup</div>
+  <h2 style="text-align:center;">Pantalla Home — Light Mode</h2>
+
+  <div class="phone-frame">
+    <div class="phone-header">
+      <div class="ph-logo">Obra<span style="opacity:0.85;">fy</span></div>
+      <div class="ph-company">Mi Empresa SL</div>
+      <div class="ph-bell">&#x1f514;</div>
+    </div>
+    <div class="phone-body">
+      <h2>Cobros del mes</h2>
+
+      <div class="mini-card" style="border-left:3px solid #DC2626;">
+        <div class="mini-dot" style="background:#DC2626;"></div>
+        <div class="mini-label">Vencidas</div>
+        <div class="mini-amount" style="color:#DC2626;">2.400 EUR</div>
+      </div>
+
+      <div class="mini-card" style="border-left:3px solid #EAB308;">
+        <div class="mini-dot" style="background:#EAB308;"></div>
+        <div class="mini-label">Pendientes</div>
+        <div class="mini-amount" style="color:#EAB308;">8.100 EUR</div>
+      </div>
+
+      <div class="mini-card" style="border-left:3px solid #16A34A;">
+        <div class="mini-dot" style="background:#16A34A;"></div>
+        <div class="mini-label">Cobradas</div>
+        <div class="mini-amount" style="color:#16A34A;">24.350 EUR</div>
+      </div>
+
+      <button class="mini-btn">+ Nuevo presupuesto</button>
+    </div>
+    <div class="phone-tabbar">
+      <div class="tab active">
+        <div class="tab-icon">&#x1F3E0;</div>
+        Inicio
+      </div>
+      <div class="tab">
+        <div class="tab-icon">&#x1F4CB;</div>
+        Presup.
+      </div>
+      <div class="tab">
+        <div class="tab-fab">+</div>
+      </div>
+      <div class="tab">
+        <div class="tab-icon">&#x1F9FE;</div>
+        Facturas
+      </div>
+      <div class="tab">
+        <div class="tab-icon">&#x2699;</div>
+        Mas
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
