@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gremio — Escudo Gremial PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0A0A0A;
+    color: #fff;
+  }
+
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+  }
+
+  .slide-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #EA580C;
+    margin-bottom: 16px;
+  }
+
+  h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+  h3 { font-size: 20px; font-weight: 600; color: #888; margin-bottom: 24px; }
+
+  .subtitle { font-size: 20px; color: #777; line-height: 1.5; max-width: 700px; }
+  .accent { color: #EA580C; }
+
+  .cover { text-align: center; align-items: center; }
+  .cover h1 { font-size: 64px; }
+
+  .concept-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .concept-desc {
+    font-size: 16px;
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .logo-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo-box {
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-width: 280px;
+    flex: 1;
+    max-width: 400px;
+    transition: transform 0.2s;
+  }
+
+  .logo-box:hover { transform: scale(1.03); }
+
+  .logo-box .logo-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+  }
+
+  .logo-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .logo-wordmark-sm {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .app-icon-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .app-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .app-icon:hover { transform: scale(1.1); }
+
+  .app-icon-label {
+    font-size: 12px;
+    color: #666;
+  }
+
+  .mockup-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .mockup-card {
+    border-radius: 20px;
+    padding: 32px;
+    min-height: 180px;
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .spec-item {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .spec-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ddd;
+  }
+
+  .spec-detail {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .logo-row { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- COVER                                        -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">01</span>
+  <div class="slide-tag">Logo definitivo</div>
+
+  <!-- Hero logo grande -->
+  <svg width="180" height="198" viewBox="0 0 120 132" fill="none" style="margin-bottom:32px; filter: drop-shadow(0 12px 40px rgba(234,88,12,0.3));">
+    <!-- Shield outer -->
+    <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+    <!-- Shield inner -->
+    <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+    <!-- Hammer (top-left to bottom-right) -->
+    <!-- Handle -->
+    <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF7ED" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- Hammer head - rectangle at top -->
+    <rect x="26" y="28" width="22" height="11" rx="2.5" fill="#FFF7ED" transform="rotate(-40, 37, 33.5)"/>
+    <!-- Hammer face (darker edge) -->
+    <rect x="26" y="28" width="6" height="11" rx="2" fill="#EA580C" opacity="0.3" transform="rotate(-40, 37, 33.5)"/>
+
+    <!-- Wrench (top-right to bottom-left) -->
+    <!-- Handle -->
+    <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF7ED" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- Wrench jaw - open end -->
+    <path d="M86 30 C94 26 98 32 96 38 L90 36 L88 42 C82 44 78 38 82 32 Z" fill="#FFF7ED"/>
+    <!-- Wrench jaw opening -->
+    <path d="M90 36 L88 42" stroke="#C2410C" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Center bolt/rivet -->
+    <circle cx="60" cy="63" r="7" fill="#FFF7ED"/>
+    <circle cx="60" cy="63" r="3.5" fill="#C2410C"/>
+  </svg>
+
+  <h1>Gremio</h1>
+  <p class="subtitle">Escudo gremial con herramientas cruzadas. Martillo y llave inglesa. El emblema del oficio.</p>
+</section>
+
+<!-- ============================================ -->
+<!-- LOGO PRINCIPAL — 3 FONDOS                    -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">02</span>
+  <div class="concept-header">
+    <div class="slide-tag">Logo principal</div>
+    <h2>Escudo + Herramientas Cruzadas</h2>
+    <p class="concept-desc">Martillo (fuerza, construccion) y llave inglesa (precision, ajuste) cruzados sobre escudo heraldico. Remache central como punto de union.</p>
+  </div>
+
+  <div class="logo-row">
+    <!-- FONDO CLARO -->
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+        <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF7ED" stroke-width="5.5" stroke-linecap="round"/>
+        <rect x="26" y="28" width="22" height="11" rx="2.5" fill="#FFF7ED" transform="rotate(-40, 37, 33.5)"/>
+        <rect x="26" y="28" width="6" height="11" rx="2" fill="#EA580C" opacity="0.3" transform="rotate(-40, 37, 33.5)"/>
+        <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF7ED" stroke-width="5.5" stroke-linecap="round"/>
+        <path d="M86 30 C94 26 98 32 96 38 L90 36 L88 42 C82 44 78 38 82 32 Z" fill="#FFF7ED"/>
+        <path d="M90 36 L88 42" stroke="#C2410C" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="60" cy="63" r="7" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="3.5" fill="#C2410C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <!-- FONDO OSCURO -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+        <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF7ED" stroke-width="5.5" stroke-linecap="round"/>
+        <rect x="26" y="28" width="22" height="11" rx="2.5" fill="#FFF7ED" transform="rotate(-40, 37, 33.5)"/>
+        <rect x="26" y="28" width="6" height="11" rx="2" fill="#EA580C" opacity="0.25" transform="rotate(-40, 37, 33.5)"/>
+        <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF7ED" stroke-width="5.5" stroke-linecap="round"/>
+        <path d="M86 30 C94 26 98 32 96 38 L90 36 L88 42 C82 44 78 38 82 32 Z" fill="#FFF7ED"/>
+        <path d="M90 36 L88 42" stroke="#EA580C" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="60" cy="63" r="7" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="3.5" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <!-- FONDO NARANJA -->
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FFFFFF"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="rgba(255,255,255,0.75)"/>
+        <line x1="38" y1="40" x2="72" y2="86" stroke="#EA580C" stroke-width="5.5" stroke-linecap="round"/>
+        <rect x="26" y="28" width="22" height="11" rx="2.5" fill="#EA580C" transform="rotate(-40, 37, 33.5)"/>
+        <rect x="26" y="28" width="6" height="11" rx="2" fill="#FFF" opacity="0.3" transform="rotate(-40, 37, 33.5)"/>
+        <line x1="82" y1="40" x2="48" y2="86" stroke="#EA580C" stroke-width="5.5" stroke-linecap="round"/>
+        <path d="M86 30 C94 26 98 32 96 38 L90 36 L88 42 C82 44 78 38 82 32 Z" fill="#EA580C"/>
+        <path d="M90 36 L88 42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="60" cy="63" r="7" fill="#EA580C"/>
+        <circle cx="60" cy="63" r="3.5" fill="rgba(255,255,255,0.75)"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;">Gremio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- LOGO SIMPLIFICADO (tamaños pequeños)         -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">03</span>
+  <div class="concept-header">
+    <div class="slide-tag">Version simplificada</div>
+    <h2>Para tamanos reducidos</h2>
+    <p class="concept-desc">Menos detalle en la llave, herramientas como lineas limpias. Para favicon, app icon, badges. Misma esencia, maxima legibilidad.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+        <!-- Hammer simplified -->
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+        <!-- Wrench simplified -->
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+        <circle cx="84" cy="36" r="2.5" fill="#C2410C"/>
+        <!-- Center rivet -->
+        <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="3" fill="#C2410C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+        <circle cx="84" cy="36" r="2.5" fill="#EA580C"/>
+        <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FFFFFF"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="rgba(255,255,255,0.75)"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#EA580C" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="#EA580C" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#EA580C" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#EA580C" stroke-width="4.5"/>
+        <circle cx="84" cy="36" r="2.5" fill="rgba(255,255,255,0.75)"/>
+        <circle cx="60" cy="63" r="6.5" fill="#EA580C"/>
+        <circle cx="60" cy="63" r="3" fill="rgba(255,255,255,0.75)"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;">Gremio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- MONOCROMO                                    -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">04</span>
+  <div class="concept-header">
+    <div class="slide-tag">Versiones monocromo</div>
+    <h2>1 solo color</h2>
+    <p class="concept-desc">Para impresion en blanco y negro, grabado, sello, estampado en ropa de trabajo o bordado. Sin degradados, sin capas.</p>
+  </div>
+
+  <div class="logo-row">
+    <!-- Negro sobre blanco -->
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#1C1917"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFFFFF" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#FFFFFF" stroke-width="4.5"/>
+        <circle cx="60" cy="63" r="6.5" fill="#FFFFFF"/>
+        <circle cx="60" cy="63" r="3" fill="#1C1917"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;">Gremio</div>
+      <div class="logo-label" style="color:#78716C;">Negro / blanco</div>
+    </div>
+
+    <!-- Blanco sobre negro -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FFFFFF"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#1C1917" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="#1C1917" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#1C1917" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#1C1917" stroke-width="4.5"/>
+        <circle cx="60" cy="63" r="6.5" fill="#1C1917"/>
+        <circle cx="60" cy="63" r="3" fill="#FFFFFF"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;">Gremio</div>
+      <div class="logo-label" style="color:#A8A29E;">Blanco / negro</div>
+    </div>
+
+    <!-- Solo outline -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="none" stroke="#EA580C" stroke-width="3"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="none" stroke="#EA580C" stroke-width="2.5" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#EA580C" stroke-width="3"/>
+        <circle cx="60" cy="63" r="6" fill="none" stroke="#EA580C" stroke-width="2.5"/>
+        <circle cx="60" cy="63" r="2" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Solo contorno</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- COMPOSICIONES                                -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">05</span>
+  <div class="concept-header">
+    <div class="slide-tag">Composiciones</div>
+    <h2>Logo + Wordmark</h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; margin-top:40px;">
+    <!-- Horizontal -->
+    <div style="background:#1C1917; border-radius:20px; padding:48px 32px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:2px;">Horizontal</div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <svg width="36" height="40" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+          <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+        </svg>
+        <span class="logo-wordmark-sm" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+      </div>
+      <div style="font-size:12px; color:#555;">Header, navbar, firma email</div>
+    </div>
+
+    <!-- Vertical -->
+    <div style="background:#1C1917; border-radius:20px; padding:48px 32px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:2px;">Vertical</div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+        <svg width="52" height="57" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+          <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+        </svg>
+        <span class="logo-wordmark-sm" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+      </div>
+      <div style="font-size:12px; color:#555;">Login, splash, tarjeta visita</div>
+    </div>
+
+    <!-- Solo icono -->
+    <div style="background:#1C1917; border-radius:20px; padding:48px 32px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:2px;">Solo icono</div>
+      <div style="display:flex; gap:20px; align-items:flex-end;">
+        <svg width="56" height="62" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+          <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+        </svg>
+        <svg width="36" height="40" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+          <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF" stroke-width="7" stroke-linecap="round"/>
+          <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="60" cy="63" r="6" fill="#FFF"/>
+        </svg>
+        <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+          <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+          <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div style="font-size:12px; color:#555;">App, favicon, sello</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- APP ICONS                                    -->
+<!-- ============================================ -->
+<section class="slide" style="align-items:center;">
+  <span class="slide-number">06</span>
+  <div class="concept-header">
+    <div class="slide-tag">App Icons</div>
+    <h2>Icono de aplicacion</h2>
+    <p class="concept-desc">3 estilos de fondo. 80px (movil) y 32px (favicon).</p>
+  </div>
+
+  <!-- 80px -->
+  <div class="app-icon-row">
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(145deg, #FB923C, #C2410C);">
+        <svg width="48" height="53" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.15)"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="6.5" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="6.5" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF" stroke-width="4.5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF"/>
+          <circle cx="60" cy="63" r="3" fill="#C2410C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">Degradado naranja</div>
+    </div>
+
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background:#1C1917; border: 1px solid #292524;">
+        <svg width="48" height="53" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+          <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">Oscuro + escudo</div>
+    </div>
+
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background:#FFFFFF; border: 1px solid #E7E5E4;">
+        <svg width="48" height="53" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+          <circle cx="60" cy="63" r="3" fill="#C2410C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">Claro + escudo</div>
+    </div>
+
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background:#EA580C;">
+        <svg width="48" height="53" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="6.5" stroke-linecap="round"/>
+          <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF" transform="rotate(-38, 38, 35)"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="6.5" stroke-linecap="round"/>
+          <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF" stroke-width="4.5"/>
+          <circle cx="60" cy="63" r="6.5" fill="#FFF"/>
+          <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">Naranja solido</div>
+    </div>
+  </div>
+
+  <!-- 32px -->
+  <div style="margin-top:48px; text-align:center;">
+    <h3>Favicon 32px</h3>
+    <div style="display:flex; gap:24px; justify-content:center; margin-top:16px;">
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(145deg, #FB923C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.15)"/>
+            <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+            <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="7" fill="#FFF"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">Degradado</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:#1C1917;">
+          <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+            <line x1="38" y1="40" x2="72" y2="86" stroke="#1C1917" stroke-width="9" stroke-linecap="round"/>
+            <line x1="82" y1="40" x2="48" y2="86" stroke="#1C1917" stroke-width="9" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="7" fill="#1C1917"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">Oscuro</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:#EA580C;">
+          <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+            <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+            <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="7" fill="#FFF"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">Naranja</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:#FFF; border:1px solid #E7E5E4;">
+          <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+            <line x1="38" y1="40" x2="72" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+            <line x1="82" y1="40" x2="48" y2="86" stroke="#FFF" stroke-width="9" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="7" fill="#FFF"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">Claro</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16px -->
+  <div style="margin-top:32px; text-align:center;">
+    <h3>Micro 16px — limite absoluto</h3>
+    <div style="display:flex; gap:16px; justify-content:center; margin-top:12px;">
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:16px; height:16px; border-radius:4px; background:linear-gradient(145deg, #FB923C, #C2410C);">
+          <svg width="10" height="11" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+            <line x1="38" y1="38" x2="72" y2="88" stroke="#FFF" stroke-width="14" stroke-linecap="round"/>
+            <line x1="82" y1="38" x2="48" y2="88" stroke="#FFF" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:16px; height:16px; border-radius:4px; background:#EA580C;">
+          <svg width="10" height="11" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+            <line x1="38" y1="38" x2="72" y2="88" stroke="#FFF" stroke-width="14" stroke-linecap="round"/>
+            <line x1="82" y1="38" x2="48" y2="88" stroke="#FFF" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <span style="font-size:11px; color:#555; align-self:center; margin-left:8px;">Reconocible incluso a 16px</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- APLICACIONES REALES                          -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">07</span>
+  <div class="concept-header">
+    <div class="slide-tag">En contexto</div>
+    <h2>Aplicaciones reales</h2>
+  </div>
+
+  <div class="mockup-row">
+    <!-- Navbar light -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:2px solid #EA580C;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="22" height="24" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+            <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+            <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="7" stroke-linecap="round"/>
+            <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="6" fill="#FFF"/>
+          </svg>
+          <span style="font-weight:800; font-size:15px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        </div>
+        <div style="display:flex; gap:16px; font-size:12px; color:#78716C;">
+          <span style="color:#EA580C; font-weight:600;">Proyectos</span>
+          <span>Gastos</span>
+          <span>Cobros</span>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px;">Navbar modo claro</div>
+    </div>
+
+    <!-- Navbar dark -->
+    <div class="mockup-card" style="background:#1C1917; border:1px solid #292524;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:2px solid #EA580C;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="22" height="24" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+            <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+            <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="7" stroke-linecap="round"/>
+            <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="6" fill="#FFF"/>
+          </svg>
+          <span style="font-weight:800; font-size:15px; color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+        </div>
+        <div style="display:flex; gap:16px; font-size:12px; color:#78716C;">
+          <span style="color:#FB923C; font-weight:600;">Proyectos</span>
+          <span>Gastos</span>
+          <span>Cobros</span>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:1px;">Navbar modo oscuro</div>
+    </div>
+
+    <!-- Login -->
+    <div class="mockup-card" style="background:linear-gradient(160deg, #EA580C 0%, #9A3412 100%); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <svg width="64" height="70" viewBox="0 0 120 132" fill="none" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.2));">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="rgba(255,255,255,0.1)"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF" stroke-width="4.5"/>
+        <circle cx="60" cy="63" r="6.5" fill="#FFF"/>
+      </svg>
+      <span style="font-weight:800; font-size:22px; color:#FFFFFF; letter-spacing:-0.5px;">Gremio</span>
+      <div style="font-size:11px; color:rgba(255,255,255,0.5);">Pantalla login / splash</div>
+    </div>
+
+    <!-- Casco obra / ropa trabajo -->
+    <div class="mockup-card" style="background:#F59E0B; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
+      <svg width="48" height="53" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(0,0,0,0.2)"/>
+        <line x1="40" y1="42" x2="70" y2="84" stroke="rgba(0,0,0,0.2)" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="30" width="20" height="10" rx="3" fill="rgba(0,0,0,0.2)" transform="rotate(-38, 38, 35)"/>
+        <line x1="80" y1="42" x2="50" y2="84" stroke="rgba(0,0,0,0.2)" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="84" cy="36" r="8" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="4.5"/>
+        <circle cx="60" cy="63" r="6" fill="rgba(0,0,0,0.2)"/>
+      </svg>
+      <div style="font-size:11px; color:rgba(0,0,0,0.4); text-transform:uppercase; letter-spacing:1px;">Estampado casco / chaleco</div>
+    </div>
+
+    <!-- Documento PDF -->
+    <div class="mockup-card" style="background:#FAFAF9; border:1px solid #E7E5E4;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #EA580C;">
+        <svg width="18" height="20" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+          <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="8" stroke-linecap="round"/>
+          <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="60" cy="63" r="7" fill="#FFF"/>
+        </svg>
+        <span style="font-weight:800; font-size:13px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        <span style="font-size:10px; color:#A8A29E; margin-left:auto;">PRESUPUESTO #0024</span>
+      </div>
+      <div style="font-size:11px; color:#78716C; line-height:1.8;">
+        <div style="display:flex; justify-content:space-between;"><span>Reforma integral cocina</span><span style="font-weight:600; color:#1C1917;">12.450,00 EUR</span></div>
+        <div style="height:1px; background:#E7E5E4; margin:4px 0;"></div>
+        <div style="display:flex; justify-content:space-between;"><span>IVA 21%</span><span>2.614,50 EUR</span></div>
+      </div>
+      <div style="margin-top:8px; font-size:10px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px;">Cabecera documento PDF</div>
+    </div>
+
+    <!-- Email -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4;">
+      <div style="text-align:center; padding:16px 0; border-bottom:3px solid #EA580C; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+            <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF" stroke-width="8" stroke-linecap="round"/>
+            <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="60" cy="63" r="7" fill="#FFF"/>
+          </svg>
+          <span style="font-weight:800; font-size:16px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        </div>
+      </div>
+      <div style="font-size:11px; color:#A8A29E; text-align:center; text-transform:uppercase; letter-spacing:1px;">Cabecera email transaccional</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ESPECIFICACIONES                             -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">08</span>
+  <div class="concept-header">
+    <div class="slide-tag">Especificaciones</div>
+    <h2>Guia tecnica</h2>
+  </div>
+
+  <div class="spec-grid">
+    <div class="spec-item">
+      <div class="spec-label">Principal</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#EA580C;"></div>
+        <div class="spec-value">#EA580C</div>
+      </div>
+      <div class="spec-detail">Naranja Gremio — RGB(234,88,12)</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Escudo interior</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#C2410C;"></div>
+        <div class="spec-value">#C2410C</div>
+      </div>
+      <div class="spec-detail">Naranja profundo — hover, sombras</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Escudo exterior (dark)</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#FB923C;"></div>
+        <div class="spec-value">#FB923C</div>
+      </div>
+      <div class="spec-detail">Naranja claro — borde en modo oscuro</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Herramientas</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#FFF7ED; border:1px solid #ddd;"></div>
+        <div class="spec-value">#FFF7ED</div>
+      </div>
+      <div class="spec-detail">Blanco calido — martillo, llave, remache</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Texto oscuro</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#1C1917; border:1px solid #333;"></div>
+        <div class="spec-value">#1C1917</div>
+      </div>
+      <div class="spec-detail">Grafito — headings y body</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Tipografia</div>
+      <div class="spec-value">Inter 800</div>
+      <div class="spec-detail">Wordmark: Extra Bold, -1px tracking</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Tamano minimo</div>
+      <div class="spec-value">16px icono</div>
+      <div class="spec-detail">32px favicon, 120px logo completo</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Herramientas</div>
+      <div class="spec-value">Martillo + Llave</div>
+      <div class="spec-detail">Stroke 5.5-6px, round caps, cruzados a 40°</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Remache central</div>
+      <div class="spec-value">7px ext / 3.5px int</div>
+      <div class="spec-detail">Punto focal donde cruzan las herramientas</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Escudo</div>
+      <div class="spec-value">2 capas</div>
+      <div class="spec-detail">Exterior (borde) + interior (relleno mas oscuro)</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Zona segura</div>
+      <div class="spec-value">25% del ancho</div>
+      <div class="spec-detail">Espacio libre minimo alrededor del logo</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Versiones</div>
+      <div class="spec-value">6 variantes</div>
+      <div class="spec-detail">Color 3 fondos + monocromo 2 + outline</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- RESUMEN FINAL                                -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">09</span>
+  <div class="slide-tag">Resumen</div>
+
+  <svg width="100" height="110" viewBox="0 0 120 132" fill="none" style="margin-bottom:24px; filter: drop-shadow(0 8px 32px rgba(234,88,12,0.25));">
+    <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+    <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+    <line x1="40" y1="42" x2="70" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+    <rect x="28" y="30" width="20" height="10" rx="3" fill="#FFF7ED" transform="rotate(-38, 38, 35)"/>
+    <line x1="80" y1="42" x2="50" y2="84" stroke="#FFF7ED" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="84" cy="36" r="8" fill="none" stroke="#FFF7ED" stroke-width="4.5"/>
+    <circle cx="84" cy="36" r="2.5" fill="#EA580C"/>
+    <circle cx="60" cy="63" r="6.5" fill="#FFF7ED"/>
+    <circle cx="60" cy="63" r="3" fill="#EA580C"/>
+  </svg>
+
+  <h2 style="font-size:48px;"><span class="accent">G</span>remio</h2>
+  <p class="subtitle" style="margin-top:16px;">Escudo gremial. Herramientas cruzadas. Naranja construccion.<br>El emblema de los profesionales del oficio.</p>
+
+  <div style="display:flex; gap:16px; margin-top:32px;">
+    <div style="padding:12px 24px; background:#141414; border-radius:10px; border:1px solid #222;">
+      <span style="font-size:12px; color:#78716C;">Logo detallado</span><br>
+      <span style="font-size:13px; font-weight:700; color:#EA580C;">Web, docs, marketing</span>
+    </div>
+    <div style="padding:12px 24px; background:#141414; border-radius:10px; border:1px solid #222;">
+      <span style="font-size:12px; color:#78716C;">Logo simplificado</span><br>
+      <span style="font-size:13px; font-weight:700; color:#EA580C;">App icon, favicon, badge</span>
+    </div>
+    <div style="padding:12px 24px; background:#141414; border-radius:10px; border:1px solid #222;">
+      <span style="font-size:12px; color:#78716C;">Monocromo</span><br>
+      <span style="font-size:13px; font-weight:700; color:#EA580C;">Impresion, sello, bordado</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
