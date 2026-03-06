@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gremio — Propuestas de Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0A0A0A;
+    color: #fff;
+  }
+
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+  }
+
+  .slide-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #EA580C;
+    margin-bottom: 16px;
+  }
+
+  h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+  h3 { font-size: 20px; font-weight: 600; color: #888; margin-bottom: 24px; }
+
+  .subtitle { font-size: 20px; color: #777; line-height: 1.5; max-width: 600px; }
+  .accent { color: #EA580C; }
+
+  /* Cover */
+  .cover { text-align: center; align-items: center; }
+  .cover h1 { font-size: 64px; }
+
+  /* Logo display */
+  .logo-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo-box {
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-width: 280px;
+    flex: 1;
+    max-width: 400px;
+    transition: transform 0.2s;
+  }
+
+  .logo-box:hover { transform: scale(1.02); }
+
+  .logo-box .logo-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+  }
+
+  .logo-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  /* Concept sections */
+  .concept-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .concept-desc {
+    font-size: 16px;
+    color: #888;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .variants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .variant-card {
+    border-radius: 20px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 220px;
+  }
+
+  .variant-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+  }
+
+  /* Usage row */
+  .usage-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .usage-item {
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #141414;
+    border: 1px solid #222;
+  }
+
+  .usage-item .usage-text {
+    font-size: 14px;
+    color: #999;
+  }
+
+  .usage-item .usage-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* App icon preview */
+  .app-icon-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .app-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .app-icon-label {
+    font-size: 12px;
+    color: #666;
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .variants-grid { grid-template-columns: 1fr; }
+    .logo-row { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="slide cover">
+  <span class="slide-number">01</span>
+  <div class="slide-tag">Identidad visual</div>
+  <h1>Gremio<br><span class="accent">3 propuestas de logo</span></h1>
+  <p class="subtitle">Tradicion + fuerza + digital. Naranja protagonista. Para profesionales de la construccion y reformas.</p>
+</section>
+
+<!-- ============================================ -->
+<!-- CONCEPTO A: MARTILLO + G                     -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">02</span>
+  <div class="concept-header">
+    <div class="slide-tag">Concepto A</div>
+    <h2>El Sello del Gremio</h2>
+    <p class="concept-desc">Un martillo estilizado que forma la letra "G". Tradicion artesana con acabado moderno. Potente, directo, memorable. El sello de los profesionales.</p>
+  </div>
+
+  <div class="logo-row">
+    <!-- Light bg -->
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <!-- Hammer head -->
+        <rect x="20" y="12" width="40" height="16" rx="3" fill="#EA580C"/>
+        <!-- Hammer face detail -->
+        <rect x="22" y="14" width="8" height="12" rx="2" fill="#C2410C"/>
+        <!-- Hammer claw -->
+        <path d="M52 12 L60 6 M52 28 L60 34" stroke="#EA580C" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- Handle forming the G curve -->
+        <rect x="36" y="28" width="8" height="30" rx="4" fill="#292524"/>
+        <!-- G crossbar -->
+        <rect x="36" y="52" width="20" height="7" rx="3.5" fill="#EA580C"/>
+        <!-- G curve at bottom -->
+        <path d="M44 58 C44 66 36 70 28 68 C20 66 16 58 16 50 C16 42 20 36 28 34" stroke="#292524" stroke-width="7" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <!-- Dark bg -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect x="20" y="12" width="40" height="16" rx="3" fill="#FB923C"/>
+        <rect x="22" y="14" width="8" height="12" rx="2" fill="#EA580C"/>
+        <path d="M52 12 L60 6 M52 28 L60 34" stroke="#FB923C" stroke-width="3.5" stroke-linecap="round"/>
+        <rect x="36" y="28" width="8" height="30" rx="4" fill="#A8A29E"/>
+        <rect x="36" y="52" width="20" height="7" rx="3.5" fill="#FB923C"/>
+        <path d="M44 58 C44 66 36 70 28 68 C20 66 16 58 16 50 C16 42 20 36 28 34" stroke="#A8A29E" stroke-width="7" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <!-- Orange bg -->
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect x="20" y="12" width="40" height="16" rx="3" fill="#FFFFFF"/>
+        <rect x="22" y="14" width="8" height="12" rx="2" fill="rgba(255,255,255,0.6)"/>
+        <path d="M52 12 L60 6 M52 28 L60 34" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+        <rect x="36" y="28" width="8" height="30" rx="4" fill="rgba(255,255,255,0.4)"/>
+        <rect x="36" y="52" width="20" height="7" rx="3.5" fill="#FFFFFF"/>
+        <path d="M44 58 C44 66 36 70 28 68 C20 66 16 58 16 50 C16 42 20 36 28 34" stroke="rgba(255,255,255,0.4)" stroke-width="7" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CONCEPTO B: ESCUDO GREMIAL                   -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">03</span>
+  <div class="concept-header">
+    <div class="slide-tag">Concepto B</div>
+    <h2>Escudo Gremial</h2>
+    <p class="concept-desc">Escudo heraldico minimalista con herramientas cruzadas. Evoca los gremios medievales con estetica moderna. Autoridad, confianza, pertenencia al oficio.</p>
+  </div>
+
+  <div class="logo-row">
+    <!-- Light bg -->
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="80" height="88" viewBox="0 0 80 88" fill="none">
+        <!-- Shield shape -->
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+        <!-- Inner shield -->
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#C2410C"/>
+        <!-- Crossed tools - wrench and hammer -->
+        <!-- Tool 1: diagonal left to right -->
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <!-- Tool 1: hammer head -->
+        <rect x="24" y="22" width="14" height="8" rx="2" fill="#FFF7ED" transform="rotate(-35, 28, 28)"/>
+        <!-- Tool 2: diagonal right to left -->
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <!-- Tool 2: wrench head -->
+        <circle cx="52" cy="28" r="6" fill="none" stroke="#FFF7ED" stroke-width="3"/>
+        <circle cx="52" cy="28" r="2" fill="#C2410C"/>
+        <!-- Center bolt -->
+        <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <!-- Dark bg -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="80" height="88" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <rect x="24" y="22" width="14" height="8" rx="2" fill="#FFF7ED" transform="rotate(-35, 28, 28)"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="52" cy="28" r="6" fill="none" stroke="#FFF7ED" stroke-width="3"/>
+        <circle cx="52" cy="28" r="2" fill="#EA580C"/>
+        <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <!-- Orange bg -->
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="80" height="88" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.7)"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <rect x="24" y="22" width="14" height="8" rx="2" fill="#EA580C" transform="rotate(-35, 28, 28)"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="52" cy="28" r="6" fill="none" stroke="#EA580C" stroke-width="3"/>
+        <circle cx="52" cy="28" r="2" fill="rgba(255,255,255,0.7)"/>
+        <circle cx="40" cy="43" r="4" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CONCEPTO C: MURO / LADRILLOS G               -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">04</span>
+  <div class="concept-header">
+    <div class="slide-tag">Concepto C</div>
+    <h2>El Muro Maestro</h2>
+    <p class="concept-desc">La "G" construida ladrillo a ladrillo formando un muro. Cada bloque es una fase de la obra. Minimalista, escalable, tech. Lo que construyes, permanece.</p>
+  </div>
+
+  <div class="logo-row">
+    <!-- Light bg -->
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="76" height="80" viewBox="0 0 76 80" fill="none">
+        <!-- G shape made of bricks -->
+        <!-- Top row (horizontal bar of G) -->
+        <rect x="18" y="4" width="16" height="12" rx="3" fill="#EA580C"/>
+        <rect x="36" y="4" width="16" height="12" rx="3" fill="#EA580C"/>
+        <rect x="54" y="4" width="16" height="12" rx="3" fill="#EA580C"/>
+        <!-- Second row - offset like real bricks -->
+        <rect x="6" y="18" width="16" height="12" rx="3" fill="#EA580C"/>
+        <!-- Third row -->
+        <rect x="12" y="32" width="16" height="12" rx="3" fill="#EA580C"/>
+        <!-- Fourth row -->
+        <rect x="6" y="46" width="16" height="12" rx="3" fill="#EA580C"/>
+        <!-- Bottom row (horizontal bar of G) -->
+        <rect x="18" y="60" width="16" height="12" rx="3" fill="#EA580C"/>
+        <rect x="36" y="60" width="16" height="12" rx="3" fill="#EA580C"/>
+        <rect x="54" y="60" width="16" height="12" rx="3" fill="#EA580C"/>
+        <!-- G middle bar -->
+        <rect x="54" y="46" width="16" height="12" rx="3" fill="#EA580C"/>
+        <rect x="40" y="46" width="12" height="12" rx="3" fill="#EA580C"/>
+        <!-- Missing brick - "in progress" -->
+        <rect x="54" y="32" width="16" height="12" rx="3" fill="none" stroke="#EA580C" stroke-width="2" stroke-dasharray="4 3" opacity="0.35"/>
+        <path d="M60 40 L65 38 L65 42 Z" fill="#EA580C" opacity="0.35"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <!-- Dark bg -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="76" height="80" viewBox="0 0 76 80" fill="none">
+        <rect x="18" y="4" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="36" y="4" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="54" y="4" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="6" y="18" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="12" y="32" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="6" y="46" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="18" y="60" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="36" y="60" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="54" y="60" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="54" y="46" width="16" height="12" rx="3" fill="#FB923C"/>
+        <rect x="40" y="46" width="12" height="12" rx="3" fill="#FB923C"/>
+        <rect x="54" y="32" width="16" height="12" rx="3" fill="none" stroke="#FB923C" stroke-width="2" stroke-dasharray="4 3" opacity="0.35"/>
+        <path d="M60 40 L65 38 L65 42 Z" fill="#FB923C" opacity="0.35"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <!-- Orange bg -->
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="76" height="80" viewBox="0 0 76 80" fill="none">
+        <rect x="18" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="36" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="54" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="6" y="18" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="12" y="32" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="6" y="46" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="18" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="36" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="54" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="54" y="46" width="16" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="40" y="46" width="12" height="12" rx="3" fill="#FFFFFF"/>
+        <rect x="54" y="32" width="16" height="12" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 3" opacity="0.35"/>
+        <path d="M60 40 L65 38 L65 42 Z" fill="#FFFFFF" opacity="0.35"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- COMPARATIVA: APP ICONS                       -->
+<!-- ============================================ -->
+<section class="slide" style="align-items:center;">
+  <span class="slide-number">05</span>
+  <div class="concept-header">
+    <div class="slide-tag">Comparativa</div>
+    <h2>App Icon — Los 3 conceptos</h2>
+    <p class="concept-desc">Como se verian en el movil del usuario. Fondo naranja, icono blanco. Reconocible a 80px.</p>
+  </div>
+
+  <div class="app-icon-row">
+    <!-- Concept A icon -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="48" viewBox="0 0 80 80" fill="none">
+          <rect x="20" y="12" width="40" height="16" rx="3" fill="#FFFFFF"/>
+          <rect x="22" y="14" width="8" height="12" rx="2" fill="rgba(255,255,255,0.6)"/>
+          <path d="M52 12 L60 6 M52 28 L60 34" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="36" y="28" width="8" height="30" rx="4" fill="rgba(255,255,255,0.4)"/>
+          <rect x="36" y="52" width="20" height="7" rx="3.5" fill="#FFFFFF"/>
+          <path d="M44 58 C44 66 36 70 28 68 C20 66 16 58 16 50 C16 42 20 36 28 34" stroke="rgba(255,255,255,0.4)" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">A — Martillo G</div>
+    </div>
+
+    <!-- Concept B icon -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.7)"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#EA580C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">B — Escudo Gremial</div>
+    </div>
+
+    <!-- Concept C icon -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="44" height="46" viewBox="0 0 76 80" fill="none">
+          <rect x="18" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="36" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="54" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="6" y="18" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="12" y="32" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="6" y="46" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="18" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="36" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="54" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="54" y="46" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="40" y="46" width="12" height="12" rx="3" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">C — Muro Maestro</div>
+    </div>
+  </div>
+
+  <!-- Favicon size -->
+  <div style="margin-top:48px; text-align:center;">
+    <h3>Favicon / tamano minimo (32px)</h3>
+    <div style="display:flex; gap:24px; justify-content:center; margin-top:16px;">
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="20" viewBox="0 0 80 80" fill="none">
+            <rect x="20" y="12" width="40" height="16" rx="3" fill="#FFFFFF"/>
+            <rect x="36" y="28" width="8" height="30" rx="4" fill="rgba(255,255,255,0.4)"/>
+            <rect x="36" y="52" width="20" height="7" rx="3.5" fill="#FFFFFF"/>
+            <path d="M44 58 C44 66 36 70 28 68 C20 66 16 58 16 50 C16 42 20 36 28 34" stroke="rgba(255,255,255,0.4)" stroke-width="7" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">A</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+            <line x1="28" y1="28" x2="52" y2="58" stroke="#EA580C" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="28" y2="58" stroke="#EA580C" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">B</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 76 80" fill="none">
+            <rect x="18" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="36" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="54" y="4" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="6" y="18" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="12" y="32" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="6" y="46" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="18" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="36" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="54" y="60" width="16" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="54" y="46" width="16" height="12" rx="3" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">C</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- RESUMEN                                      -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">06</span>
+  <div class="slide-tag">Resumen</div>
+  <h2>3 conceptos, 1 marca</h2>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:40px; max-width:900px; margin-top:40px;">
+    <div style="text-align:center;">
+      <div style="font-size:48px; margin-bottom:16px;">&#9776;</div>
+      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">A — El Sello del Gremio</div>
+      <div style="font-size:14px; color:#888; line-height:1.5;">Martillo + G. Directo, potente. Ideal si quieres transmitir <strong style="color:#ccc;">herramienta profesional con caracter</strong>.</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:48px; margin-bottom:16px;">&#9962;</div>
+      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">B — Escudo Gremial</div>
+      <div style="font-size:14px; color:#888; line-height:1.5;">Escudo + herramientas cruzadas. Heraldico. Ideal si quieres transmitir <strong style="color:#ccc;">tradicion, confianza y pertenencia</strong>.</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:48px; margin-bottom:16px;">&#9647;</div>
+      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">C — El Muro Maestro</div>
+      <div style="font-size:14px; color:#888; line-height:1.5;">G de ladrillos, uno falta. Minimalista, tech. Ideal si quieres transmitir <strong style="color:#ccc;">startup moderna y escalable</strong>.</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
