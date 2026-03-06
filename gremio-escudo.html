@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gremio — Escudo Gremial — Refinamiento</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0A0A0A;
+    color: #fff;
+  }
+
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+  }
+
+  .slide-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #EA580C;
+    margin-bottom: 16px;
+  }
+
+  h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+  h3 { font-size: 20px; font-weight: 600; color: #888; margin-bottom: 24px; }
+
+  .subtitle { font-size: 20px; color: #777; line-height: 1.5; max-width: 700px; }
+  .accent { color: #EA580C; }
+
+  .cover { text-align: center; align-items: center; }
+  .cover h1 { font-size: 64px; }
+
+  .concept-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .concept-desc {
+    font-size: 16px;
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .logo-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo-box {
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-width: 260px;
+    flex: 1;
+    max-width: 380px;
+    transition: transform 0.2s;
+  }
+
+  .logo-box:hover { transform: scale(1.03); }
+
+  .logo-box .logo-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+  }
+
+  .logo-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .logo-wordmark-sm {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  /* Variants grid */
+  .variants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .variant-card {
+    border-radius: 20px;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 240px;
+    transition: transform 0.2s;
+  }
+
+  .variant-card:hover { transform: scale(1.02); }
+
+  .variant-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ccc;
+  }
+
+  .variant-desc {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 180px;
+  }
+
+  /* App icon */
+  .app-icon-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .app-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .app-icon:hover { transform: scale(1.1); }
+
+  .app-icon-label {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Usage mockups */
+  .mockup-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .mockup-card {
+    border-radius: 20px;
+    padding: 32px;
+    min-height: 180px;
+  }
+
+  .mockup-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* Spec table */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .spec-item {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .spec-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ddd;
+  }
+
+  .spec-detail {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .logo-row { flex-direction: column; align-items: center; }
+    .variants-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- COVER                                        -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">01</span>
+  <div class="slide-tag">Identidad visual — Concepto seleccionado</div>
+  <svg width="120" height="132" viewBox="0 0 80 88" fill="none" style="margin-bottom:24px;">
+    <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+    <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#C2410C"/>
+    <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+    <rect x="24" y="22" width="14" height="8" rx="2" fill="#FFF7ED" transform="rotate(-35, 28, 28)"/>
+    <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="52" cy="28" r="6" fill="none" stroke="#FFF7ED" stroke-width="3"/>
+    <circle cx="52" cy="28" r="2" fill="#C2410C"/>
+    <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+  </svg>
+  <h1>Gremio<br><span class="accent">Escudo Gremial</span></h1>
+  <p class="subtitle">Refinamiento del concepto B. Variantes, aplicaciones, especificaciones y sistema de diseño completo.</p>
+</section>
+
+<!-- ============================================ -->
+<!-- VARIANTE 1: ORIGINAL                         -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">02</span>
+  <div class="concept-header">
+    <div class="slide-tag">Variante 1 — Original</div>
+    <h2>Herramientas Cruzadas</h2>
+    <p class="concept-desc">El concepto original. Martillo y llave cruzados sobre escudo heraldico. Maximo detalle, maximo simbolismo.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#C2410C"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <rect x="24" y="22" width="14" height="8" rx="2" fill="#FFF7ED" transform="rotate(-35, 28, 28)"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="52" cy="28" r="6" fill="none" stroke="#FFF7ED" stroke-width="3"/>
+        <circle cx="52" cy="28" r="2" fill="#C2410C"/>
+        <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <rect x="24" y="22" width="14" height="8" rx="2" fill="#FFF7ED" transform="rotate(-35, 28, 28)"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="52" cy="28" r="6" fill="none" stroke="#FFF7ED" stroke-width="3"/>
+        <circle cx="52" cy="28" r="2" fill="#EA580C"/>
+        <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.7)"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="4" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- VARIANTE 2: MINIMALISTA                      -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">03</span>
+  <div class="concept-header">
+    <div class="slide-tag">Variante 2 — Minimalista</div>
+    <h2>Escudo Limpio</h2>
+    <p class="concept-desc">Sin herramientas cruzadas. Solo el escudo con la G integrada. Mas limpio, mas moderno, mas escalable. Funciona perfecto a cualquier tamano.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#C2410C"/>
+        <!-- G letter stylized -->
+        <path d="M50 36 L50 46 L42 46" stroke="#FFF7ED" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 36 C50 24 32 20 28 32 C24 44 28 56 40 58 C48 59 52 54 52 48" stroke="#FFF7ED" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+        <path d="M50 36 L50 46 L42 46" stroke="#FFF7ED" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 36 C50 24 32 20 28 32 C24 44 28 56 40 58 C48 59 52 54 52 48" stroke="#FFF7ED" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.7)"/>
+        <path d="M50 36 L50 46 L42 46" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 36 C50 24 32 20 28 32 C24 44 28 56 40 58 C48 59 52 54 52 48" stroke="#EA580C" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- VARIANTE 3: BOLD                             -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">04</span>
+  <div class="concept-header">
+    <div class="slide-tag">Variante 3 — Bold</div>
+    <h2>Escudo Macizo</h2>
+    <p class="concept-desc">Escudo sin borde doble, una sola capa solida. La G en negativo (recortada del escudo). Contundente, imposible de ignorar.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+        <!-- G cutout - bold -->
+        <path d="M48 38 L48 48 L40 48" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M48 38 C48 22 28 18 24 34 C20 50 26 62 40 64 C50 65 54 56 52 48" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+        <path d="M48 38 L48 48 L40 48" stroke="#1C1917" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M48 38 C48 22 28 18 24 34 C20 50 26 62 40 64 C50 65 54 56 52 48" stroke="#1C1917" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+        <path d="M48 38 L48 48 L40 48" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M48 38 C48 22 28 18 24 34 C20 50 26 62 40 64 C50 65 54 56 52 48" stroke="#EA580C" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- VARIANTE 4: OUTLINE                          -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">05</span>
+  <div class="concept-header">
+    <div class="slide-tag">Variante 4 — Outline</div>
+    <h2>Escudo Contorno</h2>
+    <p class="concept-desc">Solo el contorno del escudo, sin relleno. Elegante, ligero, premium. Perfecto para fondos de color o estampados.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="none" stroke="#EA580C" stroke-width="3"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#EA580C" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#EA580C" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="3.5" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="none" stroke="#FB923C" stroke-width="3"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FB923C" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FB923C" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="3.5" fill="#FB923C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="3.5" fill="#FFFFFF"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- VARIANTE 5: ESCUDO REDONDEADO                -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">06</span>
+  <div class="concept-header">
+    <div class="slide-tag">Variante 5 — Redondeado</div>
+    <h2>Escudo Suave</h2>
+    <p class="concept-desc">Misma estructura pero con curvas mas suaves. Mas amigable, mas app, menos heraldico. Buen equilibrio entre autoridad y accesibilidad.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M12 12 C12 12 16 8 40 6 C64 8 68 12 68 12 L68 44 C68 62 54 76 40 82 C26 76 12 62 12 44 Z" fill="#EA580C" rx="8"/>
+        <path d="M18 18 C18 18 22 14 40 12 C58 14 62 18 62 18 L62 42 C62 58 50 70 40 76 C30 70 18 58 18 42 Z" fill="#C2410C"/>
+        <line x1="30" y1="30" x2="50" y2="56" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="30" y2="56" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M12 12 C12 12 16 8 40 6 C64 8 68 12 68 12 L68 44 C68 62 54 76 40 82 C26 76 12 62 12 44 Z" fill="#FB923C"/>
+        <path d="M18 18 C18 18 22 14 40 12 C58 14 62 18 62 18 L62 42 C62 58 50 70 40 76 C30 70 18 58 18 42 Z" fill="#EA580C"/>
+        <line x1="30" y1="30" x2="50" y2="56" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="30" y2="56" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="88" height="96" viewBox="0 0 80 88" fill="none">
+        <path d="M12 12 C12 12 16 8 40 6 C64 8 68 12 68 12 L68 44 C68 62 54 76 40 82 C26 76 12 62 12 44 Z" fill="#FFFFFF"/>
+        <path d="M18 18 C18 18 22 14 40 12 C58 14 62 18 62 18 L62 42 C62 58 50 70 40 76 C30 70 18 58 18 42 Z" fill="rgba(255,255,255,0.7)"/>
+        <line x1="30" y1="30" x2="50" y2="56" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="30" y2="56" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="4" fill="#EA580C"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">G</span>remio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- APP ICONS COMPARATIVA                        -->
+<!-- ============================================ -->
+<section class="slide" style="align-items:center;">
+  <span class="slide-number">07</span>
+  <div class="concept-header">
+    <div class="slide-tag">App Icons</div>
+    <h2>Las 5 variantes como icono</h2>
+    <p class="concept-desc">80px y 32px. Cual funciona mejor en el movil?</p>
+  </div>
+
+  <div class="app-icon-row">
+    <!-- V1 Original -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="rgba(255,255,255,0.15)"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.1)"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">V1 Original</div>
+    </div>
+
+    <!-- V2 Minimalista -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="rgba(255,255,255,0.15)"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.1)"/>
+          <path d="M50 36 L50 46 L42 46" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M50 36 C50 24 32 20 28 32 C24 44 28 56 40 58 C48 59 52 54 52 48" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">V2 Minimal</div>
+    </div>
+
+    <!-- V3 Bold -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+          <path d="M48 38 L48 48 L40 48" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M48 38 C48 22 28 18 24 34 C20 50 26 62 40 64 C50 65 54 56 52 48" stroke="#EA580C" stroke-width="6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">V3 Bold</div>
+    </div>
+
+    <!-- V4 Outline -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="3.5" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">V4 Outline</div>
+    </div>
+
+    <!-- V5 Rounded -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M12 12 C12 12 16 8 40 6 C64 8 68 12 68 12 L68 44 C68 62 54 76 40 82 C26 76 12 62 12 44 Z" fill="rgba(255,255,255,0.15)"/>
+          <path d="M18 18 C18 18 22 14 40 12 C58 14 62 18 62 18 L62 42 C62 58 50 70 40 76 C30 70 18 58 18 42 Z" fill="rgba(255,255,255,0.1)"/>
+          <line x1="30" y1="30" x2="50" y2="56" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+          <line x1="50" y1="30" x2="30" y2="56" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">V5 Suave</div>
+    </div>
+  </div>
+
+  <!-- 32px -->
+  <div style="margin-top:48px; text-align:center;">
+    <h3>Favicon 32px — Test de legibilidad</h3>
+    <div style="display:flex; gap:20px; justify-content:center; margin-top:16px;">
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="rgba(255,255,255,0.2)"/>
+            <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">V1</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="rgba(255,255,255,0.2)"/>
+            <path d="M50 36 L50 46 L42 46" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M50 36 C50 24 32 20 28 32 C24 44 28 56 40 58 C48 59 52 54 52 48" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">V2</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+            <path d="M48 38 L48 48 L40 48" stroke="#C2410C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M48 38 C48 22 28 18 24 34 C20 50 26 62 40 64 C50 65 54 56 52 48" stroke="#C2410C" stroke-width="7" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">V3</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="none" stroke="#FFF" stroke-width="4"/>
+            <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">V4</div>
+      </div>
+      <div class="app-icon-wrap">
+        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M12 12 C12 12 16 8 40 6 C64 8 68 12 68 12 L68 44 C68 62 54 76 40 82 C26 76 12 62 12 44 Z" fill="rgba(255,255,255,0.2)"/>
+            <line x1="30" y1="30" x2="50" y2="56" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <line x1="50" y1="30" x2="30" y2="56" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="app-icon-label">V5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- COMPOSICIONES: LOGO + WORDMARK               -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">08</span>
+  <div class="concept-header">
+    <div class="slide-tag">Composiciones</div>
+    <h2>Logo + Wordmark</h2>
+    <p class="concept-desc">Disposicion horizontal, vertical y solo icono. Usando variante V1 (original) como ejemplo.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; margin-top:40px;">
+    <!-- Horizontal -->
+    <div style="background:#1C1917; border-radius:20px; padding:40px 32px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:2px;">Horizontal</div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <svg width="40" height="44" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+        </svg>
+        <span class="logo-wordmark-sm" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+      </div>
+      <div style="font-size:12px; color:#555;">Header, navbar, email</div>
+    </div>
+
+    <!-- Vertical / Stacked -->
+    <div style="background:#1C1917; border-radius:20px; padding:40px 32px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:2px;">Vertical</div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+        </svg>
+        <span class="logo-wordmark-sm" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+      </div>
+      <div style="font-size:12px; color:#555;">Login, splash, sobre</div>
+    </div>
+
+    <!-- Solo icono -->
+    <div style="background:#1C1917; border-radius:20px; padding:40px 32px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:2px;">Solo icono</div>
+      <div style="display:flex; gap:16px; align-items:center;">
+        <svg width="48" height="52" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+        </svg>
+        <svg width="32" height="35" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF7ED" stroke-width="5" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF7ED" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFF7ED"/>
+        </svg>
+        <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="6" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div style="font-size:12px; color:#555;">App icon, favicon, watermark</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- APLICACIONES REALES                          -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">09</span>
+  <div class="concept-header">
+    <div class="slide-tag">Aplicaciones</div>
+    <h2>En contexto real</h2>
+  </div>
+
+  <div class="mockup-row">
+    <!-- Navbar mockup -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px solid #F5F5F4;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="24" height="26" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+            <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#C2410C"/>
+            <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span style="font-weight:800; font-size:16px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        </div>
+        <div style="display:flex; gap:16px; font-size:13px; color:#78716C;">
+          <span style="color:#EA580C; font-weight:600;">Proyectos</span>
+          <span>Gastos</span>
+          <span>Cobros</span>
+          <span>Informes</span>
+        </div>
+      </div>
+      <div style="margin-top:16px; font-size:11px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px;">Navbar web — modo claro</div>
+    </div>
+
+    <!-- Navbar dark -->
+    <div class="mockup-card" style="background:#1C1917; border:1px solid #292524;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px solid #292524;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="24" height="26" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+            <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+            <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span style="font-weight:800; font-size:16px; color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+        </div>
+        <div style="display:flex; gap:16px; font-size:13px; color:#78716C;">
+          <span style="color:#FB923C; font-weight:600;">Proyectos</span>
+          <span>Gastos</span>
+          <span>Cobros</span>
+          <span>Informes</span>
+        </div>
+      </div>
+      <div style="margin-top:16px; font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:1px;">Navbar web — modo oscuro</div>
+    </div>
+
+    <!-- Login screen -->
+    <div class="mockup-card" style="background:linear-gradient(180deg, #EA580C 0%, #C2410C 100%); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <svg width="56" height="62" viewBox="0 0 80 88" fill="none">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="rgba(255,255,255,0.2)"/>
+        <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="rgba(255,255,255,0.1)"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="40" cy="43" r="4" fill="#FFF"/>
+      </svg>
+      <span style="font-weight:800; font-size:24px; color:#FFFFFF; letter-spacing:-0.5px;">Gremio</span>
+      <div style="background:rgba(255,255,255,0.15); border-radius:8px; padding:8px 24px;">
+        <span style="font-size:11px; color:rgba(255,255,255,0.7);">Pantalla de login / splash</span>
+      </div>
+    </div>
+
+    <!-- Mobile bottom tab -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4; display:flex; flex-direction:column; justify-content:flex-end;">
+      <div style="font-size:11px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px; margin-bottom:auto;">Tab bar movil</div>
+      <div style="display:flex; justify-content:space-around; padding-top:12px; border-top:1px solid #F5F5F4;">
+        <div style="text-align:center;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="#EA580C"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="#EA580C" opacity="0.3"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="#EA580C" opacity="0.3"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="#EA580C" opacity="0.3"/></svg>
+          <div style="font-size:9px; color:#EA580C; font-weight:600; margin-top:2px;">Inicio</div>
+        </div>
+        <div style="text-align:center;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12" stroke="#A8A29E" stroke-width="2" stroke-linecap="round"/></svg>
+          <div style="font-size:9px; color:#A8A29E; margin-top:2px;">Obras</div>
+        </div>
+        <div style="text-align:center;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#A8A29E" stroke-width="2"/><path d="M12 8v4l3 3" stroke="#A8A29E" stroke-width="2" stroke-linecap="round"/></svg>
+          <div style="font-size:9px; color:#A8A29E; margin-top:2px;">Gastos</div>
+        </div>
+        <div style="text-align:center;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke="#A8A29E" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#A8A29E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="font-size:9px; color:#A8A29E; margin-top:2px;">Cobros</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Watermark -->
+    <div class="mockup-card" style="background:#F5F5F4; border:1px solid #E7E5E4; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
+      <div style="font-size:11px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px;">Marca de agua en PDF</div>
+      <svg width="64" height="70" viewBox="0 0 80 88" fill="none" opacity="0.08">
+        <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#1C1917"/>
+        <line x1="28" y1="28" x2="52" y2="58" stroke="#1C1917" stroke-width="5" stroke-linecap="round"/>
+        <line x1="52" y1="28" x2="28" y2="58" stroke="#1C1917" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div style="font-size:12px; color:#A8A29E;">Presupuestos, facturas, informes</div>
+    </div>
+
+    <!-- Email header -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4;">
+      <div style="text-align:center; padding:20px 0; border-bottom:3px solid #EA580C;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <svg width="20" height="22" viewBox="0 0 80 88" fill="none">
+            <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#EA580C"/>
+            <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span style="font-weight:800; font-size:14px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        </div>
+      </div>
+      <div style="padding-top:12px; font-size:11px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px; text-align:center;">Cabecera email</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ESPECIFICACIONES TECNICAS                    -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">10</span>
+  <div class="concept-header">
+    <div class="slide-tag">Especificaciones</div>
+    <h2>Guia tecnica del logo</h2>
+  </div>
+
+  <div class="spec-grid">
+    <div class="spec-item">
+      <div class="spec-label">Color principal</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#EA580C;"></div>
+        <div class="spec-value">#EA580C</div>
+      </div>
+      <div class="spec-detail">Naranja Gremio — Botones, acentos, CTA</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Color secundario</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#C2410C;"></div>
+        <div class="spec-value">#C2410C</div>
+      </div>
+      <div class="spec-detail">Naranja oscuro — Escudo interior, hover</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Color claro</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#FB923C;"></div>
+        <div class="spec-value">#FB923C</div>
+      </div>
+      <div class="spec-detail">Naranja suave — Escudo exterior dark mode</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Texto oscuro</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:24px; height:24px; border-radius:6px; background:#1C1917; border:1px solid #333;"></div>
+        <div class="spec-value">#1C1917</div>
+      </div>
+      <div class="spec-detail">Grafito — Headings, textos principales</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Tipografia</div>
+      <div class="spec-value">Inter</div>
+      <div class="spec-detail">Weight 800 para wordmark, 400-700 para UI</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Tamano minimo</div>
+      <div class="spec-value">24px icono</div>
+      <div class="spec-detail">32px favicon, 120px logo completo</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Espacio de proteccion</div>
+      <div class="spec-value">1/4 del ancho</div>
+      <div class="spec-detail">Espacio libre alrededor del logo</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Fondos permitidos</div>
+      <div class="spec-value">3 versiones</div>
+      <div class="spec-detail">Claro (#FFF), oscuro (#1C1917), naranja (#EA580C)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- RESUMEN: RECOMENDACION                       -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">11</span>
+  <div class="slide-tag">Recomendacion</div>
+  <h2>Cual elegir?</h2>
+
+  <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:20px; max-width:1000px; margin-top:40px;">
+    <div style="text-align:center; padding:20px; background:#141414; border-radius:16px;">
+      <div style="margin-bottom:12px;">
+        <svg width="40" height="44" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFF"/>
+        </svg>
+      </div>
+      <div style="font-size:13px; font-weight:700; margin-bottom:4px;">V1 Original</div>
+      <div style="font-size:11px; color:#666; line-height:1.4;">Maximo detalle. Ideal si el logo se usa <strong style="color:#999;">grande</strong>.</div>
+    </div>
+    <div style="text-align:center; padding:20px; background:#141414; border-radius:16px;">
+      <div style="margin-bottom:12px;">
+        <svg width="40" height="44" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FB923C"/>
+          <path d="M14 14 L40 10 L66 14 L66 46 C66 60 52 72 40 78 C28 72 14 60 14 46 Z" fill="#EA580C"/>
+          <path d="M50 36 L50 46 L42 46" stroke="#FFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M50 36 C50 24 32 20 28 32 C24 44 28 56 40 58 C48 59 52 54 52 48" stroke="#FFF" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div style="font-size:13px; font-weight:700; margin-bottom:4px;">V2 Minimal</div>
+      <div style="font-size:11px; color:#666; line-height:1.4;">La G dentro. Unico, <strong style="color:#999;">diferenciador</strong>.</div>
+    </div>
+    <div style="text-align:center; padding:20px; background:#1C1917; border-radius:16px; border:2px solid #EA580C;">
+      <div style="margin-bottom:12px;">
+        <svg width="40" height="44" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="#FFFFFF"/>
+          <path d="M48 38 L48 48 L40 48" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M48 38 C48 22 28 18 24 34 C20 50 26 62 40 64 C50 65 54 56 52 48" stroke="#EA580C" stroke-width="6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div style="font-size:13px; font-weight:700; color:#EA580C; margin-bottom:4px;">V3 Bold ★</div>
+      <div style="font-size:11px; color:#888; line-height:1.4;">El mas <strong style="color:#ccc;">versatil y potente</strong>. Funciona a cualquier tamano.</div>
+    </div>
+    <div style="text-align:center; padding:20px; background:#141414; border-radius:16px;">
+      <div style="margin-bottom:12px;">
+        <svg width="40" height="44" viewBox="0 0 80 88" fill="none">
+          <path d="M8 8 L40 4 L72 8 L72 48 C72 64 56 78 40 84 C24 78 8 64 8 48 Z" fill="none" stroke="#FB923C" stroke-width="3"/>
+          <line x1="28" y1="28" x2="52" y2="58" stroke="#FB923C" stroke-width="3" stroke-linecap="round"/>
+          <line x1="52" y1="28" x2="28" y2="58" stroke="#FB923C" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="3.5" fill="#FB923C"/>
+        </svg>
+      </div>
+      <div style="font-size:13px; font-weight:700; margin-bottom:4px;">V4 Outline</div>
+      <div style="font-size:11px; color:#666; line-height:1.4;">Elegante, ligero. Para uso <strong style="color:#999;">secundario</strong>.</div>
+    </div>
+    <div style="text-align:center; padding:20px; background:#141414; border-radius:16px;">
+      <div style="margin-bottom:12px;">
+        <svg width="40" height="44" viewBox="0 0 80 88" fill="none">
+          <path d="M12 12 C12 12 16 8 40 6 C64 8 68 12 68 12 L68 44 C68 62 54 76 40 82 C26 76 12 62 12 44 Z" fill="#FB923C"/>
+          <path d="M18 18 C18 18 22 14 40 12 C58 14 62 18 62 18 L62 42 C62 58 50 70 40 76 C30 70 18 58 18 42 Z" fill="#EA580C"/>
+          <line x1="30" y1="30" x2="50" y2="56" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+          <line x1="50" y1="30" x2="30" y2="56" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="40" cy="43" r="4" fill="#FFF"/>
+        </svg>
+      </div>
+      <div style="font-size:13px; font-weight:700; margin-bottom:4px;">V5 Suave</div>
+      <div style="font-size:11px; color:#666; line-height:1.4;">Mas <strong style="color:#999;">amigable</strong>. Para apps consumer.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px; padding:20px 32px; background:#1C1917; border-radius:12px; border-left:4px solid #EA580C; max-width:700px; text-align:left;">
+    <div style="font-size:14px; font-weight:700; color:#EA580C; margin-bottom:8px;">Mi recomendacion:</div>
+    <div style="font-size:14px; color:#A8A29E; line-height:1.6;"><strong style="color:#FAFAF9;">V3 Bold</strong> como logo principal — escudo blanco con G naranja. Contundente, limpio, funciona desde favicon 16px hasta valla publicitaria. <strong style="color:#FAFAF9;">V4 Outline</strong> como version secundaria para fondos complejos o usos decorativos.</div>
+  </div>
+</section>
+
+</body>
+</html>
