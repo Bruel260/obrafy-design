@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gremio — Escudo PRO v2 — Llave Inglesa Refinada</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0A0A0A;
+    color: #fff;
+  }
+
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+  }
+
+  .slide-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #EA580C;
+    margin-bottom: 16px;
+  }
+
+  h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+  h3 { font-size: 20px; font-weight: 600; color: #888; margin-bottom: 24px; }
+
+  .subtitle { font-size: 20px; color: #777; line-height: 1.5; max-width: 700px; }
+  .accent { color: #EA580C; }
+
+  .cover { text-align: center; align-items: center; }
+  .cover h1 { font-size: 64px; }
+
+  .concept-header { text-align: center; margin-bottom: 48px; }
+
+  .concept-desc {
+    font-size: 16px;
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .logo-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo-box {
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-width: 280px;
+    flex: 1;
+    max-width: 400px;
+    transition: transform 0.2s;
+  }
+
+  .logo-box:hover { transform: scale(1.03); }
+
+  .logo-box .logo-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+  }
+
+  .logo-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .logo-wordmark-sm {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .app-icon-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .app-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .app-icon:hover { transform: scale(1.1); }
+
+  .app-icon-label { font-size: 12px; color: #666; }
+
+  .mockup-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .mockup-card {
+    border-radius: 20px;
+    padding: 32px;
+    min-height: 180px;
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .spec-item {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .spec-value { font-size: 16px; font-weight: 700; color: #ddd; }
+  .spec-detail { font-size: 12px; color: #666; margin-top: 4px; }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .logo-row { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- COVER                                        -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">01</span>
+  <div class="slide-tag">Logo definitivo — v2</div>
+
+  <!-- HERO: Logo grande, llave inglesa bien dibujada -->
+  <svg width="220" height="242" viewBox="0 0 120 132" fill="none" style="margin-bottom:32px; filter: drop-shadow(0 12px 40px rgba(234,88,12,0.3));">
+    <!-- Shield outer -->
+    <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+    <!-- Shield inner -->
+    <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+
+    <!-- === MARTILLO (arriba-izq → abajo-der) === -->
+    <g transform="rotate(-38, 60, 63)">
+      <!-- Mango -->
+      <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF7ED"/>
+      <!-- Cabeza martillo -->
+      <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF7ED"/>
+      <!-- Cara de golpe (lado izq, mas oscura) -->
+      <rect x="42" y="22" width="9" height="14" rx="3" fill="#E8DED4"/>
+      <!-- Una acanaladura (oreja) -->
+      <path d="M75 22 L80 16 M75 36 L80 42" stroke="#FFF7ED" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- === LLAVE INGLESA (arriba-der → abajo-izq) === -->
+    <g transform="rotate(38, 60, 63)">
+      <!-- Mango -->
+      <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF7ED"/>
+      <!-- Cabeza de la llave - mandibula fija (izquierda) -->
+      <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF7ED" rx="1"/>
+      <!-- Cabeza de la llave - mandibula movil (derecha) -->
+      <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF7ED" rx="1"/>
+      <!-- Parte superior que une las mandibulas por detras -->
+      <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF7ED"/>
+      <!-- Rueda de ajuste (tornillo sin fin) -->
+      <rect x="58" y="27" width="4" height="8" rx="2" fill="#E8DED4"/>
+      <!-- Lineas de la rueda -->
+      <line x1="59" y1="29" x2="61" y2="29" stroke="#C2410C" stroke-width="0.8" opacity="0.5"/>
+      <line x1="59" y1="31" x2="61" y2="31" stroke="#C2410C" stroke-width="0.8" opacity="0.5"/>
+      <line x1="59" y1="33" x2="61" y2="33" stroke="#C2410C" stroke-width="0.8" opacity="0.5"/>
+      <!-- Apertura de la boca (espacio entre mandibulas) -->
+      <rect x="56" y="18" width="8" height="16" fill="#C2410C"/>
+    </g>
+
+    <!-- Remache central (encima de todo) -->
+    <circle cx="60" cy="63" r="7.5" fill="#FFF7ED"/>
+    <circle cx="60" cy="63" r="4" fill="#C2410C"/>
+    <circle cx="60" cy="63" r="1.5" fill="#FFF7ED" opacity="0.6"/>
+  </svg>
+
+  <h1>Gremio</h1>
+  <p class="subtitle">Escudo gremial. Martillo y llave inglesa cruzados. Remache central. El emblema del oficio.</p>
+</section>
+
+<!-- ============================================ -->
+<!-- DETALLE: ANATOMIA DE LA LLAVE                -->
+<!-- ============================================ -->
+<section class="slide" style="align-items:center;">
+  <span class="slide-number">02</span>
+  <div class="concept-header">
+    <div class="slide-tag">Anatomia</div>
+    <h2>Detalle de la llave inglesa</h2>
+    <p class="concept-desc">Llave ajustable con mandibula fija, mandibula movil, rueda de ajuste y mango. Cada pieza es reconocible incluso a tamanos pequenos.</p>
+  </div>
+
+  <!-- Llave grande sola, con anotaciones -->
+  <div style="display:flex; gap:60px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+    <svg width="160" height="360" viewBox="0 0 80 180" fill="none">
+      <!-- Llave vertical, grande -->
+      <!-- Mango -->
+      <rect x="34" y="80" width="12" height="90" rx="5" fill="#EA580C"/>
+      <!-- Cuerpo superior -->
+      <rect x="30" y="68" width="20" height="16" rx="3" fill="#EA580C"/>
+      <!-- Mandibula fija (izquierda) -->
+      <rect x="26" y="8" width="8" height="64" rx="2" fill="#EA580C"/>
+      <!-- Tope superior mandibula fija -->
+      <rect x="24" y="4" width="12" height="10" rx="3" fill="#EA580C"/>
+      <!-- Mandibula movil (derecha) -->
+      <rect x="46" y="20" width="8" height="52" rx="2" fill="#C2410C"/>
+      <!-- Tope superior mandibula movil -->
+      <rect x="44" y="16" width="12" height="10" rx="3" fill="#C2410C"/>
+      <!-- Apertura (boca) -->
+      <rect x="34" y="4" width="12" height="68" fill="#0A0A0A"/>
+      <!-- Rueda de ajuste -->
+      <rect x="36" y="40" width="8" height="18" rx="4" fill="#FB923C"/>
+      <!-- Estrías de la rueda -->
+      <line x1="37.5" y1="43" x2="42.5" y2="43" stroke="#9A3412" stroke-width="1" opacity="0.6"/>
+      <line x1="37.5" y1="46" x2="42.5" y2="46" stroke="#9A3412" stroke-width="1" opacity="0.6"/>
+      <line x1="37.5" y1="49" x2="42.5" y2="49" stroke="#9A3412" stroke-width="1" opacity="0.6"/>
+      <line x1="37.5" y1="52" x2="42.5" y2="52" stroke="#9A3412" stroke-width="1" opacity="0.6"/>
+      <line x1="37.5" y1="55" x2="42.5" y2="55" stroke="#9A3412" stroke-width="1" opacity="0.6"/>
+    </svg>
+
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:12px; height:12px; border-radius:3px; background:#EA580C;"></div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:#FAFAF9;">Mandibula fija</div>
+          <div style="font-size:12px; color:#666;">Lado izquierdo, mas larga, solida</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:12px; height:12px; border-radius:3px; background:#C2410C;"></div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:#FAFAF9;">Mandibula movil</div>
+          <div style="font-size:12px; color:#666;">Lado derecho, mas corta, deslizante</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:12px; height:12px; border-radius:3px; background:#FB923C;"></div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:#FAFAF9;">Rueda de ajuste</div>
+          <div style="font-size:12px; color:#666;">Tornillo sin fin con estrias</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:12px; height:12px; border-radius:3px; background:#0A0A0A; border:1px solid #333;"></div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:#FAFAF9;">Apertura (boca)</div>
+          <div style="font-size:12px; color:#666;">Espacio negativo — agarre de la tuerca</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:12px; height:12px; border-radius:3px; background:#EA580C;"></div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:#FAFAF9;">Mango</div>
+          <div style="font-size:12px; color:#666;">Ergonomico, redondeado, proporcional</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- LOGO PRINCIPAL — 3 FONDOS                    -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">03</span>
+  <div class="concept-header">
+    <div class="slide-tag">Logo principal</div>
+    <h2>Herramientas cruzadas — v2</h2>
+    <p class="concept-desc">Llave inglesa con mandibulas, rueda de ajuste y apertura visibles. Martillo con cabeza solida y una de penas. Remache de acero en el cruce.</p>
+  </div>
+
+  <div class="logo-row">
+    <!-- FONDO CLARO -->
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+        <!-- Martillo -->
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF7ED"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF7ED"/>
+          <rect x="42" y="22" width="9" height="14" rx="3" fill="#E8DED4"/>
+          <path d="M75 22 L80 16 M75 36 L80 42" stroke="#FFF7ED" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <!-- Llave inglesa -->
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF7ED"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF7ED"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF7ED"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF7ED"/>
+          <rect x="58" y="27" width="4" height="8" rx="2" fill="#E8DED4"/>
+          <line x1="59" y1="29" x2="61" y2="29" stroke="#C2410C" stroke-width="0.8" opacity="0.4"/>
+          <line x1="59" y1="31" x2="61" y2="31" stroke="#C2410C" stroke-width="0.8" opacity="0.4"/>
+          <line x1="59" y1="33" x2="61" y2="33" stroke="#C2410C" stroke-width="0.8" opacity="0.4"/>
+          <rect x="56" y="18" width="8" height="16" fill="#C2410C"/>
+          <rect x="24" y="4" width="12" height="10" rx="3" fill="#FFF7ED" transform="rotate(0)"/>
+        </g>
+        <!-- Remache -->
+        <circle cx="60" cy="63" r="7.5" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="4" fill="#C2410C"/>
+        <circle cx="60" cy="63" r="1.5" fill="#FFF7ED" opacity="0.6"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">G</span>remio</div>
+      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
+    </div>
+
+    <!-- FONDO OSCURO -->
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF7ED"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF7ED"/>
+          <rect x="42" y="22" width="9" height="14" rx="3" fill="#E8DED4"/>
+          <path d="M75 22 L80 16 M75 36 L80 42" stroke="#FFF7ED" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF7ED"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF7ED"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF7ED"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF7ED"/>
+          <rect x="58" y="27" width="4" height="8" rx="2" fill="#E8DED4"/>
+          <line x1="59" y1="29" x2="61" y2="29" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+          <line x1="59" y1="31" x2="61" y2="31" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+          <line x1="59" y1="33" x2="61" y2="33" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+          <rect x="56" y="18" width="8" height="16" fill="#EA580C"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="4" fill="#EA580C"/>
+        <circle cx="60" cy="63" r="1.5" fill="#FFF7ED" opacity="0.6"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</div>
+      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
+    </div>
+
+    <!-- FONDO NARANJA -->
+    <div class="logo-box" style="background:#EA580C;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FFFFFF"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="rgba(255,255,255,0.75)"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#EA580C"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#EA580C"/>
+          <rect x="42" y="22" width="9" height="14" rx="3" fill="#C2410C"/>
+          <path d="M75 22 L80 16 M75 36 L80 42" stroke="#EA580C" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#EA580C"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#EA580C"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#EA580C"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#EA580C"/>
+          <rect x="58" y="27" width="4" height="8" rx="2" fill="#C2410C"/>
+          <rect x="56" y="18" width="8" height="16" fill="rgba(255,255,255,0.75)"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#EA580C"/>
+        <circle cx="60" cy="63" r="4" fill="rgba(255,255,255,0.75)"/>
+        <circle cx="60" cy="63" r="1.5" fill="#EA580C" opacity="0.6"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FFFFFF;">Gremio</div>
+      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ESCALA: GRANDE → PEQUEÑO                     -->
+<!-- ============================================ -->
+<section class="slide" style="align-items:center;">
+  <span class="slide-number">04</span>
+  <div class="concept-header">
+    <div class="slide-tag">Escalabilidad</div>
+    <h2>De 200px a 16px</h2>
+    <p class="concept-desc">La llave inglesa se reconoce a todos los tamanos. A partir de 32px se simplifica automaticamente por el render del navegador.</p>
+  </div>
+
+  <div style="display:flex; align-items:flex-end; gap:40px; justify-content:center; margin-top:32px; flex-wrap:wrap;">
+    <!-- 200px -->
+    <div class="app-icon-wrap">
+      <svg width="200" height="220" viewBox="0 0 120 132" fill="none" style="filter: drop-shadow(0 8px 24px rgba(234,88,12,0.2));">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF7ED"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF7ED"/>
+          <rect x="42" y="22" width="9" height="14" rx="3" fill="#E8DED4"/>
+          <path d="M75 22 L80 16 M75 36 L80 42" stroke="#FFF7ED" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF7ED"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF7ED"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF7ED"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF7ED"/>
+          <rect x="58" y="27" width="4" height="8" rx="2" fill="#E8DED4"/>
+          <line x1="59" y1="29" x2="61" y2="29" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+          <line x1="59" y1="31" x2="61" y2="31" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+          <line x1="59" y1="33" x2="61" y2="33" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+          <rect x="56" y="18" width="8" height="16" fill="#EA580C"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#FFF7ED"/>
+        <circle cx="60" cy="63" r="4" fill="#EA580C"/>
+        <circle cx="60" cy="63" r="1.5" fill="#FFF7ED" opacity="0.6"/>
+      </svg>
+      <div class="app-icon-label">200px — Maximo detalle</div>
+    </div>
+
+    <!-- 80px -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="background:linear-gradient(145deg, #FB923C, #C2410C);">
+        <svg width="50" height="55" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.15)"/>
+          <g transform="rotate(-38, 60, 63)">
+            <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF"/>
+            <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF"/>
+          </g>
+          <g transform="rotate(38, 60, 63)">
+            <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF"/>
+            <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF"/>
+            <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF"/>
+            <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF"/>
+            <rect x="56" y="18" width="8" height="16" fill="rgba(0,0,0,0.15)"/>
+          </g>
+          <circle cx="60" cy="63" r="7" fill="#FFF"/>
+          <circle cx="60" cy="63" r="3.5" fill="#C2410C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">80px — App icon</div>
+    </div>
+
+    <!-- 48px -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="width:48px; height:48px; border-radius:12px; background:linear-gradient(145deg, #FB923C, #C2410C);">
+        <svg width="30" height="33" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.15)"/>
+          <g transform="rotate(-38, 60, 63)">
+            <rect x="55" y="30" width="10" height="64" rx="4" fill="#FFF"/>
+            <rect x="40" y="20" width="40" height="16" rx="4" fill="#FFF"/>
+          </g>
+          <g transform="rotate(38, 60, 63)">
+            <rect x="55" y="38" width="10" height="58" rx="4" fill="#FFF"/>
+            <path d="M50 16 L50 42 L55 42 L55 16 Z" fill="#FFF"/>
+            <path d="M65 22 L65 42 L70 42 L70 22 Z" fill="#FFF"/>
+            <rect x="50" y="32" width="20" height="10" rx="3" fill="#FFF"/>
+            <rect x="55" y="16" width="10" height="18" fill="rgba(0,0,0,0.15)"/>
+          </g>
+          <circle cx="60" cy="63" r="8" fill="#FFF"/>
+          <circle cx="60" cy="63" r="4" fill="#C2410C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">48px — Tab bar</div>
+    </div>
+
+    <!-- 32px -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(145deg, #FB923C, #C2410C);">
+        <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.15)"/>
+          <g transform="rotate(-38, 60, 63)">
+            <rect x="54" y="28" width="12" height="66" rx="5" fill="#FFF"/>
+            <rect x="38" y="18" width="44" height="18" rx="5" fill="#FFF"/>
+          </g>
+          <g transform="rotate(38, 60, 63)">
+            <rect x="54" y="36" width="12" height="60" rx="5" fill="#FFF"/>
+            <rect x="48" y="14" width="8" height="30" rx="2" fill="#FFF"/>
+            <rect x="64" y="20" width="8" height="24" rx="2" fill="#FFF"/>
+            <rect x="48" y="30" width="24" height="12" rx="3" fill="#FFF"/>
+            <rect x="54" y="14" width="12" height="20" fill="rgba(0,0,0,0.12)"/>
+          </g>
+          <circle cx="60" cy="63" r="9" fill="#FFF"/>
+          <circle cx="60" cy="63" r="5" fill="#C2410C"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">32px — Favicon</div>
+    </div>
+
+    <!-- 16px -->
+    <div class="app-icon-wrap">
+      <div class="app-icon" style="width:16px; height:16px; border-radius:4px; background:#EA580C;">
+        <svg width="10" height="11" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+          <g transform="rotate(-38, 60, 63)">
+            <rect x="52" y="24" width="16" height="70" rx="7" fill="#FFF"/>
+            <rect x="34" y="14" width="52" height="22" rx="7" fill="#FFF"/>
+          </g>
+          <g transform="rotate(38, 60, 63)">
+            <rect x="52" y="32" width="16" height="64" rx="7" fill="#FFF"/>
+            <rect x="44" y="10" width="12" height="34" rx="3" fill="#FFF"/>
+            <rect x="64" y="16" width="12" height="28" rx="3" fill="#FFF"/>
+            <rect x="52" y="10" width="16" height="24" fill="rgba(0,0,0,0.12)"/>
+          </g>
+          <circle cx="60" cy="63" r="12" fill="#FFF"/>
+        </svg>
+      </div>
+      <div class="app-icon-label">16px</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- MONOCROMO                                    -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">05</span>
+  <div class="concept-header">
+    <div class="slide-tag">Monocromo</div>
+    <h2>Un solo color</h2>
+    <p class="concept-desc">Para impresion B/N, grabado, sello, estampado en ropa de trabajo o bordado en casco.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-box" style="background:#FFFFFF;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#1C1917"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF"/>
+          <rect x="56" y="18" width="8" height="16" fill="#1C1917"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#FFF"/>
+        <circle cx="60" cy="63" r="4" fill="#1C1917"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;">Gremio</div>
+      <div class="logo-label" style="color:#78716C;">Negro sobre blanco</div>
+    </div>
+
+    <div class="logo-box" style="background:#1C1917;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FFFFFF"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#1C1917"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#1C1917"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#1C1917"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#1C1917"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#1C1917"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#1C1917"/>
+          <rect x="56" y="18" width="8" height="16" fill="#FFFFFF"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#1C1917"/>
+        <circle cx="60" cy="63" r="4" fill="#FFFFFF"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#FAFAF9;">Gremio</div>
+      <div class="logo-label" style="color:#A8A29E;">Blanco sobre negro</div>
+    </div>
+
+    <div class="logo-box" style="background:#F5F5F4;">
+      <svg width="96" height="106" viewBox="0 0 120 132" fill="none">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="none" stroke="#1C1917" stroke-width="3"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="none" stroke="#1C1917" stroke-width="2"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="none" stroke="#1C1917" stroke-width="2"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="none" stroke="#1C1917" stroke-width="2"/>
+          <rect x="52" y="18" width="4" height="22" fill="none" stroke="#1C1917" stroke-width="2"/>
+          <rect x="64" y="24" width="4" height="16" fill="none" stroke="#1C1917" stroke-width="2"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="none" stroke="#1C1917" stroke-width="2"/>
+        </g>
+        <circle cx="60" cy="63" r="7" fill="none" stroke="#1C1917" stroke-width="2.5"/>
+        <circle cx="60" cy="63" r="2.5" fill="#1C1917"/>
+      </svg>
+      <div class="logo-wordmark" style="color:#1C1917;">Gremio</div>
+      <div class="logo-label" style="color:#78716C;">Solo lineas (grabado)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- APLICACIONES                                 -->
+<!-- ============================================ -->
+<section class="slide">
+  <span class="slide-number">06</span>
+  <div class="concept-header">
+    <div class="slide-tag">Aplicaciones</div>
+    <h2>En contexto real</h2>
+  </div>
+
+  <div class="mockup-row">
+    <!-- Navbar dark -->
+    <div class="mockup-card" style="background:#1C1917; border:1px solid #292524;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #EA580C;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="22" height="24" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+            <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+            <g transform="rotate(-38, 60, 63)">
+              <rect x="54" y="28" width="12" height="66" rx="5" fill="#FFF"/>
+              <rect x="38" y="18" width="44" height="18" rx="5" fill="#FFF"/>
+            </g>
+            <g transform="rotate(38, 60, 63)">
+              <rect x="54" y="36" width="12" height="60" rx="5" fill="#FFF"/>
+              <rect x="48" y="14" width="8" height="30" rx="2" fill="#FFF"/>
+              <rect x="64" y="20" width="8" height="24" rx="2" fill="#FFF"/>
+              <rect x="48" y="30" width="24" height="12" rx="3" fill="#FFF"/>
+              <rect x="54" y="14" width="12" height="20" fill="rgba(0,0,0,0.12)"/>
+            </g>
+            <circle cx="60" cy="63" r="9" fill="#FFF"/>
+          </svg>
+          <span style="font-weight:800; font-size:15px; color:#FAFAF9;"><span style="color:#FB923C;">G</span>remio</span>
+        </div>
+        <div style="display:flex; gap:16px; font-size:12px; color:#78716C;">
+          <span style="color:#FB923C; font-weight:600;">Proyectos</span>
+          <span>Gastos</span>
+          <span>Cobros</span>
+          <span>Informes</span>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:#57534E; text-transform:uppercase; letter-spacing:1px;">Navbar modo oscuro</div>
+    </div>
+
+    <!-- Login -->
+    <div class="mockup-card" style="background:linear-gradient(160deg, #EA580C 0%, #9A3412 100%); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <svg width="72" height="79" viewBox="0 0 120 132" fill="none" style="filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="rgba(255,255,255,0.2)"/>
+        <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="rgba(255,255,255,0.1)"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF"/>
+          <rect x="56" y="18" width="8" height="16" fill="rgba(0,0,0,0.1)"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#FFF"/>
+        <circle cx="60" cy="63" r="4" fill="rgba(234,88,12,0.5)"/>
+      </svg>
+      <span style="font-weight:800; font-size:22px; color:#FFFFFF;">Gremio</span>
+      <div style="font-size:11px; color:rgba(255,255,255,0.5);">Splash / login</div>
+    </div>
+
+    <!-- PDF header -->
+    <div class="mockup-card" style="background:#FAFAF9; border:1px solid #E7E5E4;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #EA580C;">
+        <svg width="18" height="20" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+          <g transform="rotate(-38, 60, 63)">
+            <rect x="54" y="28" width="12" height="66" rx="5" fill="#FFF"/>
+            <rect x="38" y="18" width="44" height="18" rx="5" fill="#FFF"/>
+          </g>
+          <g transform="rotate(38, 60, 63)">
+            <rect x="54" y="36" width="12" height="60" rx="5" fill="#FFF"/>
+            <rect x="48" y="14" width="8" height="30" rx="2" fill="#FFF"/>
+            <rect x="64" y="20" width="8" height="24" rx="2" fill="#FFF"/>
+            <rect x="54" y="14" width="12" height="20" fill="rgba(0,0,0,0.1)"/>
+          </g>
+          <circle cx="60" cy="63" r="9" fill="#FFF"/>
+        </svg>
+        <span style="font-weight:800; font-size:13px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        <span style="font-size:10px; color:#A8A29E; margin-left:auto;">PRESUPUESTO #0024</span>
+      </div>
+      <div style="font-size:11px; color:#78716C; line-height:1.8;">
+        <div style="display:flex; justify-content:space-between;"><span>Reforma integral cocina</span><span style="font-weight:600; color:#1C1917;">12.450,00 EUR</span></div>
+        <div style="height:1px; background:#E7E5E4; margin:4px 0;"></div>
+        <div style="display:flex; justify-content:space-between;"><span>IVA 21%</span><span>2.614,50 EUR</span></div>
+      </div>
+      <div style="margin-top:8px; font-size:10px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px;">Cabecera presupuesto PDF</div>
+    </div>
+
+    <!-- Chaleco -->
+    <div class="mockup-card" style="background:#F59E0B; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
+      <svg width="52" height="57" viewBox="0 0 120 132" fill="none" opacity="0.25">
+        <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#000"/>
+        <g transform="rotate(-38, 60, 63)">
+          <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#F59E0B"/>
+          <rect x="42" y="22" width="36" height="14" rx="3" fill="#F59E0B"/>
+        </g>
+        <g transform="rotate(38, 60, 63)">
+          <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#F59E0B"/>
+          <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#F59E0B"/>
+          <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#F59E0B"/>
+          <rect x="52" y="34" width="16" height="8" rx="2" fill="#F59E0B"/>
+          <rect x="56" y="18" width="8" height="16" fill="#000"/>
+        </g>
+        <circle cx="60" cy="63" r="7.5" fill="#F59E0B"/>
+        <circle cx="60" cy="63" r="4" fill="#000"/>
+      </svg>
+      <div style="font-size:11px; color:rgba(0,0,0,0.35); text-transform:uppercase; letter-spacing:1px;">Chaleco obra / casco</div>
+    </div>
+
+    <!-- Tarjeta visita -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg width="28" height="31" viewBox="0 0 120 132" fill="none">
+          <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+          <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+          <g transform="rotate(-38, 60, 63)">
+            <rect x="54" y="28" width="12" height="66" rx="5" fill="#FFF"/>
+            <rect x="38" y="18" width="44" height="18" rx="5" fill="#FFF"/>
+          </g>
+          <g transform="rotate(38, 60, 63)">
+            <rect x="54" y="36" width="12" height="60" rx="5" fill="#FFF"/>
+            <rect x="48" y="14" width="8" height="30" rx="2" fill="#FFF"/>
+            <rect x="64" y="20" width="8" height="24" rx="2" fill="#FFF"/>
+            <rect x="54" y="14" width="12" height="20" fill="rgba(0,0,0,0.1)"/>
+          </g>
+          <circle cx="60" cy="63" r="9" fill="#FFF"/>
+        </svg>
+        <span style="font-weight:800; font-size:18px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+      </div>
+      <div style="margin-top:auto;">
+        <div style="font-size:13px; font-weight:600; color:#1C1917;">Juan Garcia Lopez</div>
+        <div style="font-size:11px; color:#78716C;">Director de obra</div>
+        <div style="font-size:10px; color:#A8A29E; margin-top:4px;">+34 612 345 678 — juan@gremioapp.com</div>
+      </div>
+      <div style="font-size:10px; color:#A8A29E; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Tarjeta de visita</div>
+    </div>
+
+    <!-- Email -->
+    <div class="mockup-card" style="background:#FFFFFF; border:1px solid #E7E5E4;">
+      <div style="text-align:center; padding:16px 0; border-bottom:3px solid #EA580C; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <svg width="20" height="22" viewBox="0 0 120 132" fill="none">
+            <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#EA580C"/>
+            <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#C2410C"/>
+            <g transform="rotate(-38, 60, 63)">
+              <rect x="54" y="28" width="12" height="66" rx="5" fill="#FFF"/>
+              <rect x="38" y="18" width="44" height="18" rx="5" fill="#FFF"/>
+            </g>
+            <g transform="rotate(38, 60, 63)">
+              <rect x="54" y="36" width="12" height="60" rx="5" fill="#FFF"/>
+              <rect x="48" y="14" width="8" height="30" rx="2" fill="#FFF"/>
+              <rect x="64" y="20" width="8" height="24" rx="2" fill="#FFF"/>
+              <rect x="54" y="14" width="12" height="20" fill="rgba(0,0,0,0.1)"/>
+            </g>
+            <circle cx="60" cy="63" r="9" fill="#FFF"/>
+          </svg>
+          <span style="font-weight:800; font-size:16px; color:#1C1917;"><span style="color:#EA580C;">G</span>remio</span>
+        </div>
+      </div>
+      <div style="font-size:11px; color:#A8A29E; text-align:center; text-transform:uppercase; letter-spacing:1px;">Email transaccional</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- RESUMEN FINAL                                -->
+<!-- ============================================ -->
+<section class="slide cover">
+  <span class="slide-number">07</span>
+  <div class="slide-tag">Logo definitivo</div>
+
+  <svg width="120" height="132" viewBox="0 0 120 132" fill="none" style="margin-bottom:24px; filter: drop-shadow(0 8px 32px rgba(234,88,12,0.25));">
+    <path d="M10 16 C10 12 14 8 18 7 L60 2 L102 7 C106 8 110 12 110 16 L110 68 C110 92 88 112 60 126 C32 112 10 92 10 68 Z" fill="#FB923C"/>
+    <path d="M18 22 L60 10 L102 22 L102 66 C102 86 82 104 60 116 C38 104 18 86 18 66 Z" fill="#EA580C"/>
+    <g transform="rotate(-38, 60, 63)">
+      <rect x="56" y="32" width="8" height="62" rx="3.5" fill="#FFF7ED"/>
+      <rect x="42" y="22" width="36" height="14" rx="3" fill="#FFF7ED"/>
+      <rect x="42" y="22" width="9" height="14" rx="3" fill="#E8DED4"/>
+      <path d="M75 22 L80 16 M75 36 L80 42" stroke="#FFF7ED" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g transform="rotate(38, 60, 63)">
+      <rect x="56" y="40" width="8" height="56" rx="3.5" fill="#FFF7ED"/>
+      <path d="M52 18 L52 40 L56 40 L56 18 Z" fill="#FFF7ED"/>
+      <path d="M64 24 L64 40 L68 40 L68 24 Z" fill="#FFF7ED"/>
+      <rect x="52" y="34" width="16" height="8" rx="2" fill="#FFF7ED"/>
+      <rect x="58" y="27" width="4" height="8" rx="2" fill="#E8DED4"/>
+      <line x1="59" y1="29" x2="61" y2="29" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+      <line x1="59" y1="31" x2="61" y2="31" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+      <line x1="59" y1="33" x2="61" y2="33" stroke="#EA580C" stroke-width="0.8" opacity="0.4"/>
+      <rect x="56" y="18" width="8" height="16" fill="#EA580C"/>
+    </g>
+    <circle cx="60" cy="63" r="7.5" fill="#FFF7ED"/>
+    <circle cx="60" cy="63" r="4" fill="#EA580C"/>
+    <circle cx="60" cy="63" r="1.5" fill="#FFF7ED" opacity="0.6"/>
+  </svg>
+
+  <h2 style="font-size:48px;"><span class="accent">G</span>remio</h2>
+  <p class="subtitle" style="margin-top:16px; max-width:500px;">Escudo gremial con martillo y llave inglesa cruzados.<br>Mandibulas, rueda de ajuste, remache de acero.<br>El emblema de los profesionales del oficio.</p>
+
+  <div style="display:flex; gap:12px; margin-top:32px;">
+    <div style="width:40px; height:40px; border-radius:10px; background:#EA580C;"></div>
+    <div style="width:40px; height:40px; border-radius:10px; background:#C2410C;"></div>
+    <div style="width:40px; height:40px; border-radius:10px; background:#FB923C;"></div>
+    <div style="width:40px; height:40px; border-radius:10px; background:#1C1917;"></div>
+    <div style="width:40px; height:40px; border-radius:10px; background:#FFF7ED; border:1px solid #ddd;"></div>
+  </div>
+</section>
+
+</body>
+</html>
