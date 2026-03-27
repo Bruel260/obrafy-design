@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obrafy — Paleta StelOrder (Referencia)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* StelOrder Brand Colors */
+    --stel-navy: #282848;
+    --stel-navy-alt: #3E3E5A;
+    --stel-orange: #FD893A;
+    --stel-orange-dark: #FD6C00;
+    --stel-teal: #39B29B;
+    --stel-teal-bright: #45DCC6;
+    --stel-blue: #478BF3;
+    --stel-purple: #6957D7;
+    --stel-red: #E02020;
+    --stel-green: #4ACE32;
+    --stel-yellow: #F5B300;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #0F0F0F;
+    color: #fff;
+  }
+
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #222;
+    position: relative;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+  }
+
+  .slide-tag {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--stel-orange);
+    margin-bottom: 16px;
+  }
+
+  h1 { font-size: 56px; font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+  h2 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 32px; }
+  h3 { font-size: 22px; font-weight: 600; margin-bottom: 20px; color: #ccc; }
+
+  .subtitle { font-size: 22px; color: #999; line-height: 1.5; max-width: 700px; }
+  .accent { color: var(--stel-orange); }
+
+  .cover { text-align: center; align-items: center; }
+  .cover h1 { font-size: 72px; }
+
+  .source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 999px;
+    font-size: 14px;
+    color: #888;
+    margin-top: 24px;
+  }
+
+  /* Color Grid */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .color-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+  }
+
+  .color-swatch { height: 100px; width: 100%; }
+  .color-info { padding: 14px 16px; }
+  .color-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .color-hex { font-size: 13px; color: #888; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .color-use { font-size: 12px; color: #666; margin-top: 6px; }
+
+  /* Scale bars */
+  .scale-bar {
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 24px 0;
+    height: 120px;
+  }
+
+  .scale-bar div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .scale-bar .s-label {
+    font-size: 10px;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Gradient demos */
+  .gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .gradient-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+  }
+
+  .gradient-swatch {
+    height: 120px;
+    width: 100%;
+  }
+
+  .gradient-info { padding: 14px 16px; }
+  .gradient-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .gradient-code { font-size: 11px; color: #666; font-family: 'SF Mono', monospace; word-break: break-all; }
+
+  /* Text preview */
+  .text-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+  }
+
+  .text-row {
+    display: flex;
+    align-items: center;
+    padding: 16px 28px;
+    border-bottom: 1px solid #eee;
+    gap: 24px;
+  }
+
+  .text-row:last-child { border-bottom: none; }
+
+  .text-sample { flex: 1; }
+
+  .text-meta {
+    font-size: 12px;
+    color: #999;
+    font-family: 'SF Mono', monospace;
+    white-space: nowrap;
+    min-width: 140px;
+    text-align: right;
+  }
+
+  /* Components */
+  .components-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    align-items: flex-start;
+  }
+
+  .component-box {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid #2a2a2a;
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .component-box h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .btn-demo { display: flex; flex-direction: column; gap: 12px; }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    transition: all 0.15s;
+  }
+
+  .btn-navy { background: var(--stel-navy); color: #fff; }
+  .btn-navy:hover { background: var(--stel-navy-alt); }
+  .btn-orange { background: var(--stel-orange); color: #fff; }
+  .btn-orange:hover { background: var(--stel-orange-dark); }
+  .btn-teal { background: var(--stel-teal); color: #fff; }
+  .btn-teal:hover { background: var(--stel-teal-bright); }
+  .btn-blue-outline { background: transparent; border: 2px solid var(--stel-blue); color: var(--stel-blue); }
+  .btn-ghost { background: transparent; color: var(--stel-orange); }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .badge-success { background: #dcfce7; color: #15803d; }
+  .badge-warning { background: #fef9c3; color: #a16207; }
+  .badge-danger { background: #FFEBE8; color: #b91c1c; }
+  .badge-navy { background: #E9E9ED; color: var(--stel-navy); }
+  .badge-teal { background: #EBF7F5; color: #2d9a86; }
+
+  /* Card demo */
+  .card-demo {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .card-demo .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .card-demo .card-title { font-weight: 600; font-size: 16px; color: #2E2E2E; }
+  .card-demo .card-sub { font-size: 14px; color: #69697F; }
+  .card-demo .card-amount { font-size: 20px; font-weight: 700; color: var(--stel-navy); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Cover -->
+<section class="slide cover">
+  <span class="slide-number">01</span>
+  <h1>Paleta <span class="accent">StelOrder</span></h1>
+  <p class="subtitle">Referencia de colores extraida de stelorder.com para el design system de Obrafy.</p>
+  <div class="source-badge">Fuente: stelorder.com &mdash; Marzo 2026</div>
+</section>
+
+<!-- SLIDE 2: Brand Core -->
+<section class="slide">
+  <span class="slide-number">02</span>
+  <div class="slide-tag">Brand Core</div>
+  <h2>Colores principales</h2>
+  <p class="subtitle" style="margin-bottom:32px;">Navy oscuro como color de marca. Naranja como CTA principal.</p>
+
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#282848;"></div>
+      <div class="color-info">
+        <div class="color-name">Primary Navy</div>
+        <div class="color-hex">#282848</div>
+        <div class="color-use">Marca, headings, botones, footer</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#3E3E5A;"></div>
+      <div class="color-info">
+        <div class="color-name">Navy Alt</div>
+        <div class="color-hex">#3E3E5A</div>
+        <div class="color-use">Navy claro, hovers, secciones</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FD893A;"></div>
+      <div class="color-info">
+        <div class="color-name">Orange</div>
+        <div class="color-hex">#FD893A</div>
+        <div class="color-use">CTA, links, precios, highlights</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FD6C00;"></div>
+      <div class="color-info">
+        <div class="color-name">Orange Dark</div>
+        <div class="color-hex">#FD6C00</div>
+        <div class="color-use">Submit buttons, CTAs fuertes</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px;">Colores de producto</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#39B29B;"></div>
+      <div class="color-info">
+        <div class="color-name">Teal (Tempo)</div>
+        <div class="color-hex">#39B29B</div>
+        <div class="color-use">Producto Tempo, badges, buttons</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#45DCC6;"></div>
+      <div class="color-info">
+        <div class="color-name">Teal Bright</div>
+        <div class="color-hex">#45DCC6</div>
+        <div class="color-use">CTA menu Tempo</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#478BF3;"></div>
+      <div class="color-info">
+        <div class="color-name">Blue (Stelia)</div>
+        <div class="color-hex">#478BF3</div>
+        <div class="color-use">Producto Stelia, gradientes</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#6957D7;"></div>
+      <div class="color-info">
+        <div class="color-name">Purple</div>
+        <div class="color-hex">#6957D7</div>
+        <div class="color-use">Accent, highlights</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: Escalas -->
+<section class="slide">
+  <span class="slide-number">03</span>
+  <div class="slide-tag">Escalas</div>
+  <h2>Escalas de color</h2>
+
+  <h3>Orange Scale</h3>
+  <div class="scale-bar">
+    <div style="background:#F9F5F2; color:#92400E;"><span class="s-label">10</span>#F9F5F2</div>
+    <div style="background:#FFF1E6; color:#92400E;"><span class="s-label">15</span>#FFF1E6</div>
+    <div style="background:#FEDCC4; color:#92400E;"><span class="s-label">30</span>#FEDCC4</div>
+    <div style="background:#FEC49C; color:#92400E;"><span class="s-label">50</span>#FEC49C</div>
+    <div style="background:#FEAC75; color:#fff;"><span class="s-label">70</span>#FEAC75</div>
+    <div style="background:#FD893A; color:#fff;"><span class="s-label">90</span>#FD893A</div>
+    <div style="background:#FD6C00; color:#fff;"><span class="s-label">100</span>#FD6C00</div>
+  </div>
+
+  <h3>Teal Scale</h3>
+  <div class="scale-bar">
+    <div style="background:#EBF7F5; color:#1a5c4f;"><span class="s-label">10</span>#EBF7F5</div>
+    <div style="background:#D7F0EB; color:#1a5c4f;"><span class="s-label">20</span>#D7F0EB</div>
+    <div style="background:#C4E8E1; color:#1a5c4f;"><span class="s-label">30</span>#C4E8E1</div>
+    <div style="background:#9CD9CD; color:#fff;"><span class="s-label">50</span>#9CD9CD</div>
+    <div style="background:#74C9B9; color:#fff;"><span class="s-label">70</span>#74C9B9</div>
+    <div style="background:#4DBAA5; color:#fff;"><span class="s-label">90</span>#4DBAA5</div>
+    <div style="background:#39B29B; color:#fff;"><span class="s-label">100</span>#39B29B</div>
+  </div>
+
+  <h3>Navy Scale</h3>
+  <div class="scale-bar">
+    <div style="background:#E9E9ED; color:#282848;"><span class="s-label">10</span>#E9E9ED</div>
+    <div style="background:#D4D4DA; color:#282848;"><span class="s-label">20</span>#D4D4DA</div>
+    <div style="background:#BEBEC8; color:#282848;"><span class="s-label">30</span>#BEBEC8</div>
+    <div style="background:#9393A3; color:#fff;"><span class="s-label">50</span>#9393A3</div>
+    <div style="background:#7E7E91; color:#fff;"><span class="s-label">60</span>#7E7E91</div>
+    <div style="background:#3E3E5A; color:#fff;"><span class="s-label">Alt</span>#3E3E5A</div>
+    <div style="background:#282848; color:#fff;"><span class="s-label">100</span>#282848</div>
+  </div>
+
+  <h3>Blue Scale</h3>
+  <div class="scale-bar">
+    <div style="background:#F6F9FE; color:#282848;"><span class="s-label">5</span>#F6F9FE</div>
+    <div style="background:#EDF3FE; color:#282848;"><span class="s-label">10</span>#EDF3FE</div>
+    <div style="background:#DAE8FD; color:#282848;"><span class="s-label">20</span>#DAE8FD</div>
+    <div style="background:#A3C5F9; color:#fff;"><span class="s-label">50</span>#A3C5F9</div>
+    <div style="background:#6CA2F5; color:#fff;"><span class="s-label">80</span>#6CA2F5</div>
+    <div style="background:#5997F4; color:#fff;"><span class="s-label">90</span>#5997F4</div>
+    <div style="background:#478BF3; color:#fff;"><span class="s-label">100</span>#478BF3</div>
+  </div>
+</section>
+
+<!-- SLIDE 4: Fondos y Textos -->
+<section class="slide">
+  <span class="slide-number">04</span>
+  <div class="slide-tag">Fondos &amp; Textos</div>
+  <h2>Backgrounds y colores de texto</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>Fondos</h3>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#FFFFFF; border-bottom:1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">White</div>
+            <div class="color-hex">#FFFFFF</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#FAFAFA; border-bottom:1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">Near-White</div>
+            <div class="color-hex">#FAFAFA</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#F7F7F7; border-bottom:1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">Light Gray</div>
+            <div class="color-hex">#F7F7F7</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#F0F0F0;"></div>
+          <div class="color-info">
+            <div class="color-name">Light Gray Alt</div>
+            <div class="color-hex">#F0F0F0</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#FFF1E6; border-bottom:1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">Orange Light BG</div>
+            <div class="color-hex">#FFF1E6</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#EBF7F5; border-bottom:1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">Teal Light BG</div>
+            <div class="color-hex">#EBF7F5</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#F6F9FE; border-bottom:1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">Blue Light BG</div>
+            <div class="color-hex">#F6F9FE</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#E9E9ED;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray Medium</div>
+            <div class="color-hex">#E9E9ED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Textos</h3>
+      <div class="text-stack">
+        <div class="text-row">
+          <div class="text-sample" style="font-size:18px; font-weight:700; color:#2E2E2E;">Texto principal</div>
+          <div class="text-meta" style="color:#2E2E2E;">#2E2E2E</div>
+        </div>
+        <div class="text-row">
+          <div class="text-sample" style="font-size:16px; font-weight:400; color:#3D3D3D;">Texto secundario</div>
+          <div class="text-meta" style="color:#3D3D3D;">#3D3D3D</div>
+        </div>
+        <div class="text-row">
+          <div class="text-sample" style="font-size:16px; font-weight:400; color:#414141;">Texto navegacion</div>
+          <div class="text-meta" style="color:#414141;">#414141</div>
+        </div>
+        <div class="text-row">
+          <div class="text-sample" style="font-size:14px; font-weight:400; color:#69697F;">Subtexto, descripciones</div>
+          <div class="text-meta" style="color:#69697F;">#69697F</div>
+        </div>
+        <div class="text-row">
+          <div class="text-sample" style="font-size:14px; font-weight:400; color:#666666;">Texto muted</div>
+          <div class="text-meta" style="color:#666666;">#666666</div>
+        </div>
+        <div class="text-row">
+          <div class="text-sample" style="font-size:13px; font-weight:400; color:#878787;">Texto ligero, captions</div>
+          <div class="text-meta" style="color:#878787;">#878787</div>
+        </div>
+        <div class="text-row">
+          <div class="text-sample" style="font-size:18px; font-weight:700; color:#0F172A;">Texto muy oscuro</div>
+          <div class="text-meta" style="color:#0F172A;">#0F172A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: Estados y Bordes -->
+<section class="slide">
+  <span class="slide-number">05</span>
+  <div class="slide-tag">Estados</div>
+  <h2>Semanticos y utilidad</h2>
+
+  <h3>Estados</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E02020;"></div>
+      <div class="color-info">
+        <div class="color-name">Error / Danger</div>
+        <div class="color-hex">#E02020</div>
+        <div class="color-use">Errores, estados criticos</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFEBE8;"></div>
+      <div class="color-info">
+        <div class="color-name">Error Light BG</div>
+        <div class="color-hex">#FFEBE8</div>
+        <div class="color-use">Fondo alertas error</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#4ACE32;"></div>
+      <div class="color-info">
+        <div class="color-name">Success</div>
+        <div class="color-hex">#4ACE32</div>
+        <div class="color-use">Cobrado, validado, correcto</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F5B300;"></div>
+      <div class="color-info">
+        <div class="color-name">Warning</div>
+        <div class="color-hex">#F5B300</div>
+        <div class="color-use">Pendiente, alerta, atencion</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px;">Bordes y utilidad</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E4E4E4;"></div>
+      <div class="color-info">
+        <div class="color-name">Border Light</div>
+        <div class="color-hex">#E4E4E4</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C2C2C2;"></div>
+      <div class="color-info">
+        <div class="color-name">Border Medium</div>
+        <div class="color-hex">#C2C2C2</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#DDDDDD;"></div>
+      <div class="color-info">
+        <div class="color-name">Divider</div>
+        <div class="color-hex">#DDDDDD</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E2E6EF;"></div>
+      <div class="color-info">
+        <div class="color-name">Input Border</div>
+        <div class="color-hex">#E2E6EF</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFB279;"></div>
+      <div class="color-info">
+        <div class="color-name">Focus Orange</div>
+        <div class="color-hex">#FFB279</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#A6DDD2;"></div>
+      <div class="color-info">
+        <div class="color-name">Focus Teal</div>
+        <div class="color-hex">#A6DDD2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: Gradientes -->
+<section class="slide">
+  <span class="slide-number">06</span>
+  <div class="slide-tag">Gradientes</div>
+  <h2>Gradientes principales</h2>
+
+  <div class="gradient-grid">
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(192deg, #282848 27.45%, #478BF3 180%);"></div>
+      <div class="gradient-info">
+        <div class="gradient-name">Hero Navy → Blue</div>
+        <div class="gradient-code">linear-gradient(192deg, #282848 27.45%, #478BF3 180%)</div>
+      </div>
+    </div>
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(90deg, #fff 50%, rgba(253,108,0,0.10) 50%);"></div>
+      <div class="gradient-info">
+        <div class="gradient-name">Split White-Orange</div>
+        <div class="gradient-code">linear-gradient(90deg, #fff 50%, rgba(253,108,0,0.10) 50%)</div>
+      </div>
+    </div>
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(90deg, #fff 50%, rgba(6,188,161,0.10) 50%);"></div>
+      <div class="gradient-info">
+        <div class="gradient-name">Split White-Teal</div>
+        <div class="gradient-code">linear-gradient(90deg, #fff 50%, rgba(6,188,161,0.10) 50%)</div>
+      </div>
+    </div>
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(90deg, #fff 50%, rgba(76,158,233,0.10) 50%);"></div>
+      <div class="gradient-info">
+        <div class="gradient-name">Split White-Blue</div>
+        <div class="gradient-code">linear-gradient(90deg, #fff 50%, rgba(76,158,233,0.10) 50%)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: Componentes con paleta StelOrder -->
+<section class="slide">
+  <span class="slide-number">07</span>
+  <div class="slide-tag">Componentes</div>
+  <h2>Botones y badges con paleta StelOrder</h2>
+
+  <div class="components-row">
+    <div class="component-box">
+      <h4>Botones</h4>
+      <div class="btn-demo">
+        <button class="btn btn-navy">Accion principal (Navy)</button>
+        <button class="btn btn-orange">CTA / Comprar (Orange)</button>
+        <button class="btn btn-teal">Confirmar (Teal)</button>
+        <button class="btn btn-blue-outline">Secundario (Blue)</button>
+        <button class="btn btn-ghost">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="component-box">
+      <h4>Badges</h4>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;">
+        <span class="badge badge-success">Cobrado</span>
+        <span class="badge badge-warning">Pendiente</span>
+        <span class="badge badge-danger">Vencido</span>
+        <span class="badge badge-navy">Enviado</span>
+        <span class="badge badge-teal">En proceso</span>
+      </div>
+
+      <h4>Card ejemplo</h4>
+      <div class="card-demo">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Reforma bano Familia Lopez</div>
+            <div class="card-sub">Enviado hace 3 dias</div>
+          </div>
+          <span class="badge badge-navy">Enviado</span>
+        </div>
+        <div class="card-amount">4.850,00 EUR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: Resumen -->
+<section class="slide cover">
+  <span class="slide-number">08</span>
+  <h2>Resumen — 5 colores clave</h2>
+  <div class="scale-bar" style="max-width:900px; margin:32px auto; height:160px; border-radius:24px;">
+    <div style="background:#282848; color:#fff;">
+      <span class="s-label">Primary</span>
+      Navy<br>#282848
+    </div>
+    <div style="background:#FD893A; color:#fff;">
+      <span class="s-label">CTA</span>
+      Orange<br>#FD893A
+    </div>
+    <div style="background:#39B29B; color:#fff;">
+      <span class="s-label">Secondary</span>
+      Teal<br>#39B29B
+    </div>
+    <div style="background:#3E3E5A; color:#fff;">
+      <span class="s-label">Text</span>
+      Navy Alt<br>#3E3E5A
+    </div>
+    <div style="background:#478BF3; color:#fff;">
+      <span class="s-label">Accent</span>
+      Blue<br>#478BF3
+    </div>
+  </div>
+  <p class="subtitle" style="text-align:center; margin:0 auto;">Paleta extraida de stelorder.com como referencia para el design system de Obrafy.</p>
+</section>
+
+</body>
+</html>
