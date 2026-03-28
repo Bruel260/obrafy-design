@@ -4,171 +4,379 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Obrafy — Logos Favoritos</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    background: #0A0A0A;
+    background: #0a0a0f;
     color: #fff;
   }
 
-  .slide {
-    min-height: 100vh;
-    padding: 60px 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid #1a1a1a;
-    position: relative;
-  }
-
-  .slide-number {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    font-size: 14px;
-    color: #444;
-    font-weight: 600;
-  }
-
-  .slide-tag {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #EA580C;
-    margin-bottom: 16px;
-  }
-
-  h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
-  h2 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
-  h3 { font-size: 20px; font-weight: 600; color: #888; margin-bottom: 24px; }
-
-  .subtitle { font-size: 20px; color: #777; line-height: 1.5; max-width: 600px; }
-  .accent { color: #EA580C; }
-
   /* Cover */
-  .cover { text-align: center; align-items: center; }
-  .cover h1 { font-size: 64px; }
-
-  /* Logo display */
-  .logo-row {
-    display: flex;
-    gap: 40px;
-    margin-top: 24px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .logo-box {
-    border-radius: 24px;
-    padding: 48px;
+  .cover {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 24px;
-    min-width: 280px;
-    flex: 1;
-    max-width: 400px;
-    transition: transform 0.2s;
+    text-align: center;
+    padding: 60px 40px;
+    background: linear-gradient(180deg, #0a0a0f 0%, #12122a 100%);
   }
 
-  .logo-box:hover { transform: scale(1.02); }
+  .cover h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
 
-  .logo-box .logo-label {
+  .cover .accent { color: #FD893A; }
+
+  .cover p {
+    font-size: 20px;
+    color: #888;
+    max-width: 600px;
+  }
+
+  .cover .badge {
+    margin-top: 24px;
+    padding: 8px 20px;
+    background: #1a1a2e;
+    border: 1px solid #282848;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #69697F;
+  }
+
+  /* Logo slides */
+  .logo-slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #1a1a2e;
+    position: relative;
+  }
+
+  .logo-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 80px;
+    font-weight: 900;
+    color: #15152a;
+    line-height: 1;
+  }
+
+  .logo-header {
+    padding: 60px 80px 30px;
+  }
+
+  .logo-tag {
     font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.5;
+    letter-spacing: 3px;
+    color: #FD893A;
+    margin-bottom: 12px;
   }
 
-  .logo-wordmark {
+  .logo-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .logo-desc {
+    font-size: 16px;
+    color: #69697F;
+    max-width: 500px;
+  }
+
+  .logo-showcase {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  .logo-variant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    gap: 16px;
+    position: relative;
+  }
+
+  .logo-variant::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+  }
+
+  .logo-variant.light { background: #FAFAFA; }
+  .logo-variant.dark { background: #282848; }
+  .logo-variant.navy { background: #1e1e3a; }
+  .logo-variant.orange { background: #FD893A; }
+
+  /* Logo 3: Stacked Bars (Construction) */
+  .logo-3 .icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+
+  .logo-3 .icon .bar {
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  .logo-3 .icon .bar1 { width: 50px; background: #282848; }
+  .logo-3 .icon .bar2 { width: 40px; background: #3E3E5A; }
+  .logo-3 .icon .bar3 { width: 60px; background: #FD893A; }
+  .logo-3 .icon .bar4 { width: 30px; background: #39B29B; }
+
+  .logo-3 .text {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-3 .text .fy { color: #FD893A; }
+
+  /* Logo 5: Blueprint / Grid */
+  .logo-5 .icon {
+    width: 72px; height: 72px;
+    border: 3px solid #282848;
+    border-radius: 14px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-5 .icon::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 2px;
+    background: #282848;
+    opacity: 0.3;
+  }
+
+  .logo-5 .icon::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    background: #282848;
+    opacity: 0.3;
+  }
+
+  .logo-5 .icon span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #FD893A;
+    z-index: 1;
+  }
+
+  .logo-5 .text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .logo-5 .text .obra { color: #282848; }
+  .logo-5 .text .fy { color: #FD893A; }
+
+  /* Logo 10: Stencil Industrial */
+  .logo-10 .wordmark {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+  }
+
+  .logo-10 .wordmark .underbar {
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    height: 5px;
+    background: #FD893A;
+    border-radius: 3px;
+  }
+
+  .logo-10 .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #69697F;
+    margin-top: 12px;
+  }
+
+  /* Bloques Modulares */
+  .logo-blocks .logo-wordmark {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
     font-size: 36px;
     letter-spacing: -1px;
   }
 
-  /* Concept sections */
-  .concept-header {
-    text-align: center;
-    margin-bottom: 48px;
-  }
+  /* Sello de Obra - no extra CSS needed, uses inline SVG */
 
-  .concept-desc {
-    font-size: 16px;
-    color: #888;
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  /* App icon preview */
-  .app-icon-row {
-    display: flex;
+  /* Summary grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 32px;
-    justify-content: center;
-    margin-top: 32px;
-    flex-wrap: wrap;
-  }
-
-  .app-icon-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .app-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
-
-  .app-icon-label {
-    font-size: 12px;
-    color: #666;
+    max-width: 1100px;
+    margin-top: 40px;
   }
 
   @media (max-width: 900px) {
-    .slide { padding: 40px 24px; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 28px; }
-    .logo-row { flex-direction: column; align-items: center; }
+    .logo-showcase { grid-template-columns: 1fr; }
+    .logo-header { padding: 40px 24px 20px; }
+    .cover h1 { font-size: 40px; }
+    .logo-number { font-size: 50px; }
+    .summary-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- COVER -->
-<section class="slide cover">
-  <span class="slide-number">01</span>
-  <div class="slide-tag">Seleccion final</div>
-  <h1>Obrafy<br><span class="accent">6 logos favoritos</span></h1>
-  <p class="subtitle">Los mejores conceptos reunidos. Obra + control + digital. Naranja protagonista.</p>
+<!-- Cover -->
+<section class="cover">
+  <h1>5 <span class="accent">Logos</span></h1>
+  <p>Seleccion final de logos para Obrafy. Los mejores conceptos reunidos.</p>
+  <div class="badge">Seleccion final &mdash; Marzo 2026</div>
 </section>
 
 <!-- ============================================ -->
-<!-- 1. BLOQUES MODULARES (ex Concepto C)         -->
+<!-- 1. STACKED BARS                              -->
 <!-- ============================================ -->
-<section class="slide">
-  <span class="slide-number">02</span>
-  <div class="concept-header">
-    <div class="slide-tag">Propuesta 1</div>
-    <h2>Bloques Modulares</h2>
-    <p class="concept-desc">La "O" de Obrafy construida con bloques, como ladrillos o modulos de obra. Minimalista, escalable, muy tech. Un bloque falta: la obra siempre avanza.</p>
+<section class="logo-slide">
+  <div class="logo-number">01</div>
+  <div class="logo-header">
+    <div class="logo-tag">Propuesta 01</div>
+    <div class="logo-title">Stacked Bars</div>
+    <div class="logo-desc">Barras apiladas como capas de construccion. Multicolor mostrando la gama completa de la paleta.</div>
   </div>
+  <div class="logo-showcase">
+    <div class="logo-variant light logo-3" data-label="Light">
+      <div class="icon">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+        <div class="bar bar4"></div>
+      </div>
+      <div class="text" style="color:#282848;">obra<span class="fy">fy</span></div>
+    </div>
+    <div class="logo-variant dark logo-3" data-label="Dark">
+      <div class="icon">
+        <div class="bar bar1" style="background:#9393A3;"></div>
+        <div class="bar bar2" style="background:#BEBEC8;"></div>
+        <div class="bar bar3"></div>
+        <div class="bar bar4"></div>
+      </div>
+      <div class="text" style="color:#fff;">obra<span class="fy">fy</span></div>
+    </div>
+    <div class="logo-variant orange logo-3" data-label="On Orange">
+      <div class="icon">
+        <div class="bar bar1" style="background:#fff;"></div>
+        <div class="bar bar2" style="background:rgba(255,255,255,0.6);"></div>
+        <div class="bar bar3" style="background:#282848;"></div>
+        <div class="bar bar4" style="background:#39B29B;"></div>
+      </div>
+      <div class="text" style="color:#fff;">obra<span class="fy" style="color:#282848;">fy</span></div>
+    </div>
+  </div>
+</section>
 
-  <div class="logo-row">
-    <!-- Light bg -->
-    <div class="logo-box" style="background:#FFFFFF;">
+<!-- ============================================ -->
+<!-- 2. BLUEPRINT GRID                            -->
+<!-- ============================================ -->
+<section class="logo-slide">
+  <div class="logo-number">02</div>
+  <div class="logo-header">
+    <div class="logo-tag">Propuesta 02</div>
+    <div class="logo-title">Blueprint Grid</div>
+    <div class="logo-desc">Cuadricula de plano tecnico con O naranja al centro. Referencia directa a planos de obra.</div>
+  </div>
+  <div class="logo-showcase">
+    <div class="logo-variant light logo-5" data-label="Light">
+      <div class="icon"><span>O</span></div>
+      <div class="text"><span class="obra" style="color:#282848;">Obra</span><span class="fy">fy</span></div>
+    </div>
+    <div class="logo-variant dark logo-5" data-label="Dark">
+      <div class="icon" style="border-color:#9393A3;"><span>O</span></div>
+      <div class="text"><span class="obra" style="color:#fff;">Obra</span><span class="fy">fy</span></div>
+    </div>
+    <div class="logo-variant orange logo-5" data-label="On Orange">
+      <div class="icon" style="border-color:#fff;"><span style="color:#fff;">O</span></div>
+      <div class="text"><span class="obra" style="color:#fff;">Obra</span><span class="fy" style="color:#282848;">fy</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 3. STENCIL INDUSTRIAL                        -->
+<!-- ============================================ -->
+<section class="logo-slide">
+  <div class="logo-number">03</div>
+  <div class="logo-header">
+    <div class="logo-tag">Propuesta 03</div>
+    <div class="logo-title">Stencil Industrial</div>
+    <div class="logo-desc">Tipografia pesada tipo stencil con barra naranja inferior. Industrial, serio, contundente.</div>
+  </div>
+  <div class="logo-showcase">
+    <div class="logo-variant light logo-10" data-label="Light">
+      <div>
+        <div class="wordmark" style="color:#282848;">OBRAFY<div class="underbar" style="width:100%;"></div></div>
+        <div class="sub" style="color:#69697F;">GESTION DE OBRAS</div>
+      </div>
+    </div>
+    <div class="logo-variant dark logo-10" data-label="Dark">
+      <div>
+        <div class="wordmark" style="color:#fff;">OBRAFY<div class="underbar" style="width:100%;"></div></div>
+        <div class="sub" style="color:#9393A3;">GESTION DE OBRAS</div>
+      </div>
+    </div>
+    <div class="logo-variant orange logo-10" data-label="On Orange">
+      <div>
+        <div class="wordmark" style="color:#fff;">OBRAFY<div class="underbar" style="width:100%;background:#282848;"></div></div>
+        <div class="sub" style="color:rgba(255,255,255,0.7);">GESTION DE OBRAS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 4. BLOQUES MODULARES                         -->
+<!-- ============================================ -->
+<section class="logo-slide">
+  <div class="logo-number">04</div>
+  <div class="logo-header">
+    <div class="logo-tag">Propuesta 04</div>
+    <div class="logo-title">Bloques Modulares</div>
+    <div class="logo-desc">La "O" de Obrafy construida con bloques, como ladrillos o modulos de obra. Minimalista, escalable, muy tech. Un bloque falta: la obra siempre avanza.</div>
+  </div>
+  <div class="logo-showcase">
+    <div class="logo-variant light logo-blocks" data-label="Light">
       <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
         <rect x="8" y="4" width="18" height="18" rx="4" fill="#EA580C"/>
         <rect x="29" y="4" width="18" height="18" rx="4" fill="#EA580C"/>
@@ -181,11 +389,8 @@
         <path d="M56 58 L62 55 L62 61 Z" fill="#EA580C" opacity="0.4"/>
       </svg>
       <div class="logo-wordmark" style="color:#1C1917;"><span style="color:#EA580C;">O</span>bra<span style="color:#EA580C;">fy</span></div>
-      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
     </div>
-
-    <!-- Dark bg -->
-    <div class="logo-box" style="background:#1C1917;">
+    <div class="logo-variant dark logo-blocks" data-label="Dark">
       <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
         <rect x="8" y="4" width="18" height="18" rx="4" fill="#FB923C"/>
         <rect x="29" y="4" width="18" height="18" rx="4" fill="#FB923C"/>
@@ -198,11 +403,8 @@
         <path d="M56 58 L62 55 L62 61 Z" fill="#FB923C" opacity="0.4"/>
       </svg>
       <div class="logo-wordmark" style="color:#FAFAF9;"><span style="color:#FB923C;">O</span>bra<span style="color:#FB923C;">fy</span></div>
-      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
     </div>
-
-    <!-- Orange bg -->
-    <div class="logo-box" style="background:#EA580C;">
+    <div class="logo-variant orange logo-blocks" data-label="On Orange">
       <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
         <rect x="8" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
         <rect x="29" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
@@ -215,49 +417,40 @@
         <path d="M56 58 L62 55 L62 61 Z" fill="#FFFFFF" opacity="0.4"/>
       </svg>
       <div class="logo-wordmark" style="color:#FFFFFF;"><span style="color:#FFF7ED;">O</span>bra<span style="color:#FFF7ED;">fy</span></div>
-      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
     </div>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 2. SELLO DE OBRA (ex Concepto E)             -->
+<!-- 5. SELLO DE OBRA                             -->
 <!-- ============================================ -->
-<section class="slide">
-  <span class="slide-number">03</span>
-  <div class="concept-header">
-    <div class="slide-tag">Propuesta 2</div>
-    <h2>Sello de Obra</h2>
-    <p class="concept-desc">OBRAFY dentro de un sello rectangular como los cuños de aprobacion en planos de obra. Autoridad, validacion, profesionalidad.</p>
+<section class="logo-slide">
+  <div class="logo-number">05</div>
+  <div class="logo-header">
+    <div class="logo-tag">Propuesta 05</div>
+    <div class="logo-title">Sello de Obra</div>
+    <div class="logo-desc">OBRAFY dentro de un sello rectangular como los cuños de aprobacion en planos de obra. Autoridad, validacion, profesionalidad.</div>
   </div>
-
-  <div class="logo-row">
-    <!-- Light bg -->
-    <div class="logo-box" style="background:#FFFFFF;">
+  <div class="logo-showcase">
+    <div class="logo-variant light" data-label="Light">
       <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
         <rect x="4" y="4" width="212" height="82" rx="4" fill="none" stroke="#292524" stroke-width="4"/>
         <rect x="12" y="12" width="196" height="66" rx="2" fill="none" stroke="#292524" stroke-width="1.5"/>
-        <line x1="20" y1="24" x2="200" y2="24" stroke="#EA580C" stroke-width="2"/>
-        <line x1="20" y1="66" x2="200" y2="66" stroke="#EA580C" stroke-width="2"/>
+        <line x1="20" y1="24" x2="200" y2="24" stroke="#FD893A" stroke-width="2"/>
+        <line x1="20" y1="66" x2="200" y2="66" stroke="#FD893A" stroke-width="2"/>
         <text x="110" y="52" font-family="Inter,sans-serif" font-weight="900" font-size="30" fill="#292524" text-anchor="middle" letter-spacing="8">OBRAFY</text>
       </svg>
-      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
     </div>
-
-    <!-- Dark bg -->
-    <div class="logo-box" style="background:#1C1917;">
+    <div class="logo-variant dark" data-label="Dark">
       <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
         <rect x="4" y="4" width="212" height="82" rx="4" fill="none" stroke="#FAFAF9" stroke-width="4"/>
         <rect x="12" y="12" width="196" height="66" rx="2" fill="none" stroke="#FAFAF9" stroke-width="1.5"/>
-        <line x1="20" y1="24" x2="200" y2="24" stroke="#EA580C" stroke-width="2"/>
-        <line x1="20" y1="66" x2="200" y2="66" stroke="#EA580C" stroke-width="2"/>
+        <line x1="20" y1="24" x2="200" y2="24" stroke="#FD893A" stroke-width="2"/>
+        <line x1="20" y1="66" x2="200" y2="66" stroke="#FD893A" stroke-width="2"/>
         <text x="110" y="52" font-family="Inter,sans-serif" font-weight="900" font-size="30" fill="#FAFAF9" text-anchor="middle" letter-spacing="8">OBRAFY</text>
       </svg>
-      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
     </div>
-
-    <!-- Orange bg -->
-    <div class="logo-box" style="background:#EA580C;">
+    <div class="logo-variant orange" data-label="On Orange">
       <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
         <rect x="4" y="4" width="212" height="82" rx="4" fill="none" stroke="#FFFFFF" stroke-width="4"/>
         <rect x="12" y="12" width="196" height="66" rx="2" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
@@ -265,359 +458,6 @@
         <line x1="20" y1="66" x2="200" y2="66" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
         <text x="110" y="52" font-family="Inter,sans-serif" font-weight="900" font-size="30" fill="#FFFFFF" text-anchor="middle" letter-spacing="8">OBRAFY</text>
       </svg>
-      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 3. MONOGRAM BOLD (ex Propuesta 01 stelorder) -->
-<!-- ============================================ -->
-<section class="slide">
-  <span class="slide-number">04</span>
-  <div class="concept-header">
-    <div class="slide-tag">Propuesta 3</div>
-    <h2>Monogram Bold</h2>
-    <p class="concept-desc">Icono cuadrado redondeado con la O y un punto naranja como acento. Limpio y reconocible en cualquier tamano. Solido, directo.</p>
-  </div>
-
-  <div class="logo-row">
-    <!-- Light bg -->
-    <div class="logo-box" style="background:#FFFFFF;">
-      <div style="width:72px; height:72px; background:#292524; border-radius:18px; display:flex; align-items:center; justify-content:center; position:relative;">
-        <span style="font-family:'Poppins',sans-serif; font-size:36px; font-weight:800; color:#fff;">O</span>
-        <div style="position:absolute; top:8px; right:8px; width:14px; height:14px; background:#EA580C; border-radius:50%;"></div>
-      </div>
-      <div style="font-family:'Poppins',sans-serif; font-size:32px; font-weight:700; color:#292524;">Obra<span style="color:#EA580C;">fy</span></div>
-      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
-    </div>
-
-    <!-- Dark bg -->
-    <div class="logo-box" style="background:#1C1917;">
-      <div style="width:72px; height:72px; background:#57534E; border-radius:18px; display:flex; align-items:center; justify-content:center; position:relative;">
-        <span style="font-family:'Poppins',sans-serif; font-size:36px; font-weight:800; color:#fff;">O</span>
-        <div style="position:absolute; top:8px; right:8px; width:14px; height:14px; background:#EA580C; border-radius:50%;"></div>
-      </div>
-      <div style="font-family:'Poppins',sans-serif; font-size:32px; font-weight:700; color:#FAFAF9;">Obra<span style="color:#FB923C;">fy</span></div>
-      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
-    </div>
-
-    <!-- Orange bg -->
-    <div class="logo-box" style="background:#EA580C;">
-      <div style="width:72px; height:72px; background:#FFFFFF; border-radius:18px; display:flex; align-items:center; justify-content:center; position:relative;">
-        <span style="font-family:'Poppins',sans-serif; font-size:36px; font-weight:800; color:#292524;">O</span>
-        <div style="position:absolute; top:8px; right:8px; width:14px; height:14px; background:#292524; border-radius:50%;"></div>
-      </div>
-      <div style="font-family:'Poppins',sans-serif; font-size:32px; font-weight:700; color:#FFFFFF;">Obra<span style="color:#292524;">fy</span></div>
-      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 4. STACKED BARS (ex Propuesta 03 stelorder)  -->
-<!-- ============================================ -->
-<section class="slide">
-  <span class="slide-number">05</span>
-  <div class="concept-header">
-    <div class="slide-tag">Propuesta 4</div>
-    <h2>Stacked Bars</h2>
-    <p class="concept-desc">Barras apiladas como capas de construccion. Cada capa un material, un paso, un avance. Ritmo visual que transmite progreso y solidez.</p>
-  </div>
-
-  <div class="logo-row">
-    <!-- Light bg -->
-    <div class="logo-box" style="background:#FFFFFF;">
-      <div style="display:flex; flex-direction:column; gap:5px; align-items:flex-start;">
-        <div style="height:10px; width:50px; border-radius:5px; background:#292524;"></div>
-        <div style="height:10px; width:40px; border-radius:5px; background:#57534E;"></div>
-        <div style="height:10px; width:60px; border-radius:5px; background:#EA580C;"></div>
-        <div style="height:10px; width:30px; border-radius:5px; background:#A8A29E;"></div>
-      </div>
-      <div class="logo-wordmark" style="color:#292524;">obra<span style="color:#EA580C;">fy</span></div>
-      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
-    </div>
-
-    <!-- Dark bg -->
-    <div class="logo-box" style="background:#1C1917;">
-      <div style="display:flex; flex-direction:column; gap:5px; align-items:flex-start;">
-        <div style="height:10px; width:50px; border-radius:5px; background:#A8A29E;"></div>
-        <div style="height:10px; width:40px; border-radius:5px; background:#D6D3D1;"></div>
-        <div style="height:10px; width:60px; border-radius:5px; background:#EA580C;"></div>
-        <div style="height:10px; width:30px; border-radius:5px; background:#78716C;"></div>
-      </div>
-      <div class="logo-wordmark" style="color:#FAFAF9;">obra<span style="color:#FB923C;">fy</span></div>
-      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
-    </div>
-
-    <!-- Orange bg -->
-    <div class="logo-box" style="background:#EA580C;">
-      <div style="display:flex; flex-direction:column; gap:5px; align-items:flex-start;">
-        <div style="height:10px; width:50px; border-radius:5px; background:#FFFFFF;"></div>
-        <div style="height:10px; width:40px; border-radius:5px; background:rgba(255,255,255,0.6);"></div>
-        <div style="height:10px; width:60px; border-radius:5px; background:#292524;"></div>
-        <div style="height:10px; width:30px; border-radius:5px; background:rgba(255,255,255,0.4);"></div>
-      </div>
-      <div class="logo-wordmark" style="color:#FFFFFF;">obra<span style="color:#292524;">fy</span></div>
-      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 5. BLUEPRINT GRID (ex Propuesta 05 stelorder)-->
-<!-- ============================================ -->
-<section class="slide">
-  <span class="slide-number">06</span>
-  <div class="concept-header">
-    <div class="slide-tag">Propuesta 5</div>
-    <h2>Blueprint Grid</h2>
-    <p class="concept-desc">Cuadricula de plano tecnico con la O naranja al centro. Referencia directa a planos de obra. Precision, orden, planificacion.</p>
-  </div>
-
-  <div class="logo-row">
-    <!-- Light bg -->
-    <div class="logo-box" style="background:#FFFFFF;">
-      <div style="width:72px; height:72px; border:3px solid #292524; border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center;">
-        <div style="position:absolute; top:50%; left:0; right:0; height:2px; background:#292524; opacity:0.3;"></div>
-        <div style="position:absolute; left:50%; top:0; bottom:0; width:2px; background:#292524; opacity:0.3;"></div>
-        <span style="font-family:'Montserrat',sans-serif; font-size:28px; font-weight:900; color:#EA580C; z-index:1;">O</span>
-      </div>
-      <div style="font-family:'Montserrat',sans-serif; font-size:30px; font-weight:700;">
-        <span style="color:#292524;">Obra</span><span style="color:#EA580C;">fy</span>
-      </div>
-      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
-    </div>
-
-    <!-- Dark bg -->
-    <div class="logo-box" style="background:#1C1917;">
-      <div style="width:72px; height:72px; border:3px solid #A8A29E; border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center;">
-        <div style="position:absolute; top:50%; left:0; right:0; height:2px; background:#A8A29E; opacity:0.3;"></div>
-        <div style="position:absolute; left:50%; top:0; bottom:0; width:2px; background:#A8A29E; opacity:0.3;"></div>
-        <span style="font-family:'Montserrat',sans-serif; font-size:28px; font-weight:900; color:#EA580C; z-index:1;">O</span>
-      </div>
-      <div style="font-family:'Montserrat',sans-serif; font-size:30px; font-weight:700;">
-        <span style="color:#FAFAF9;">Obra</span><span style="color:#FB923C;">fy</span>
-      </div>
-      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
-    </div>
-
-    <!-- Orange bg -->
-    <div class="logo-box" style="background:#EA580C;">
-      <div style="width:72px; height:72px; border:3px solid #FFFFFF; border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center;">
-        <div style="position:absolute; top:50%; left:0; right:0; height:2px; background:#FFFFFF; opacity:0.3;"></div>
-        <div style="position:absolute; left:50%; top:0; bottom:0; width:2px; background:#FFFFFF; opacity:0.3;"></div>
-        <span style="font-family:'Montserrat',sans-serif; font-size:28px; font-weight:900; color:#FFFFFF; z-index:1;">O</span>
-      </div>
-      <div style="font-family:'Montserrat',sans-serif; font-size:30px; font-weight:700;">
-        <span style="color:#FFFFFF;">Obra</span><span style="color:#292524;">fy</span>
-      </div>
-      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 6. STENCIL INDUSTRIAL (ex Propuesta 10)      -->
-<!-- ============================================ -->
-<section class="slide">
-  <span class="slide-number">07</span>
-  <div class="concept-header">
-    <div class="slide-tag">Propuesta 6</div>
-    <h2>Stencil Industrial</h2>
-    <p class="concept-desc">Tipografia pesada tipo stencil con barra naranja inferior. Industrial, serio, contundente. Como las letras pintadas en las vigas de obra.</p>
-  </div>
-
-  <div class="logo-row">
-    <!-- Light bg -->
-    <div class="logo-box" style="background:#FFFFFF;">
-      <div style="text-align:center;">
-        <div style="font-family:'Montserrat',sans-serif; font-size:48px; font-weight:900; letter-spacing:6px; text-transform:uppercase; color:#292524; position:relative; display:inline-block;">
-          OBRAFY
-          <div style="position:absolute; bottom:-6px; left:0; width:100%; height:5px; background:#EA580C; border-radius:3px;"></div>
-        </div>
-        <div style="font-family:'Inter',sans-serif; font-size:12px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:#78716C; margin-top:16px;">Gestion de obras</div>
-      </div>
-      <div class="logo-label" style="color:#78716C;">Fondo claro</div>
-    </div>
-
-    <!-- Dark bg -->
-    <div class="logo-box" style="background:#1C1917;">
-      <div style="text-align:center;">
-        <div style="font-family:'Montserrat',sans-serif; font-size:48px; font-weight:900; letter-spacing:6px; text-transform:uppercase; color:#FAFAF9; position:relative; display:inline-block;">
-          OBRAFY
-          <div style="position:absolute; bottom:-6px; left:0; width:100%; height:5px; background:#EA580C; border-radius:3px;"></div>
-        </div>
-        <div style="font-family:'Inter',sans-serif; font-size:12px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:#A8A29E; margin-top:16px;">Gestion de obras</div>
-      </div>
-      <div class="logo-label" style="color:#A8A29E;">Fondo oscuro</div>
-    </div>
-
-    <!-- Orange bg -->
-    <div class="logo-box" style="background:#EA580C;">
-      <div style="text-align:center;">
-        <div style="font-family:'Montserrat',sans-serif; font-size:48px; font-weight:900; letter-spacing:6px; text-transform:uppercase; color:#FFFFFF; position:relative; display:inline-block;">
-          OBRAFY
-          <div style="position:absolute; bottom:-6px; left:0; width:100%; height:5px; background:#292524; border-radius:3px;"></div>
-        </div>
-        <div style="font-family:'Inter',sans-serif; font-size:12px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-top:16px;">Gestion de obras</div>
-      </div>
-      <div class="logo-label" style="color:rgba(255,255,255,0.5);">Fondo naranja</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- COMPARATIVA: APP ICONS                       -->
-<!-- ============================================ -->
-<section class="slide" style="align-items:center;">
-  <span class="slide-number">08</span>
-  <div class="concept-header">
-    <div class="slide-tag">Comparativa</div>
-    <h2>App Icon — Los 6 favoritos</h2>
-    <p class="concept-desc">Como se verian en el movil del usuario. Fondo naranja, icono blanco. Reconocible a 80px.</p>
-  </div>
-
-  <div class="app-icon-row">
-    <!-- 1. Bloques -->
-    <div class="app-icon-wrap">
-      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
-        <svg width="44" height="44" viewBox="0 0 76 76" fill="none">
-          <rect x="8" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="29" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="50" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="8" y="25" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="50" y="25" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="8" y="46" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="29" y="46" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          <rect x="50" y="46" width="18" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
-        </svg>
-      </div>
-      <div class="app-icon-label">1 — Bloques</div>
-    </div>
-
-    <!-- 2. Sello -->
-    <div class="app-icon-wrap">
-      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
-        <svg width="48" height="40" viewBox="0 0 220 90" fill="none">
-          <rect x="4" y="4" width="212" height="82" rx="4" fill="none" stroke="#FFFFFF" stroke-width="5"/>
-          <text x="110" y="55" font-family="Inter,sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" text-anchor="middle" letter-spacing="6">OBRAFY</text>
-        </svg>
-      </div>
-      <div class="app-icon-label">2 — Sello</div>
-    </div>
-
-    <!-- 3. Monogram -->
-    <div class="app-icon-wrap">
-      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
-        <div style="width:48px; height:48px; background:#FFFFFF; border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative;">
-          <span style="font-family:'Poppins',sans-serif; font-size:24px; font-weight:800; color:#292524;">O</span>
-          <div style="position:absolute; top:4px; right:4px; width:10px; height:10px; background:#EA580C; border-radius:50%;"></div>
-        </div>
-      </div>
-      <div class="app-icon-label">3 — Monogram</div>
-    </div>
-
-    <!-- 4. Bars -->
-    <div class="app-icon-wrap">
-      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
-        <div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
-          <div style="height:7px; width:32px; border-radius:4px; background:#FFFFFF;"></div>
-          <div style="height:7px; width:24px; border-radius:4px; background:rgba(255,255,255,0.6);"></div>
-          <div style="height:7px; width:40px; border-radius:4px; background:#FFFFFF;"></div>
-          <div style="height:7px; width:18px; border-radius:4px; background:rgba(255,255,255,0.5);"></div>
-        </div>
-      </div>
-      <div class="app-icon-label">4 — Bars</div>
-    </div>
-
-    <!-- 5. Blueprint -->
-    <div class="app-icon-wrap">
-      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
-        <div style="width:48px; height:48px; border:2.5px solid #FFFFFF; border-radius:10px; position:relative; display:flex; align-items:center; justify-content:center;">
-          <div style="position:absolute; top:50%; left:0; right:0; height:1.5px; background:rgba(255,255,255,0.3);"></div>
-          <div style="position:absolute; left:50%; top:0; bottom:0; width:1.5px; background:rgba(255,255,255,0.3);"></div>
-          <span style="font-family:'Montserrat',sans-serif; font-size:20px; font-weight:900; color:#FFFFFF; z-index:1;">O</span>
-        </div>
-      </div>
-      <div class="app-icon-label">5 — Blueprint</div>
-    </div>
-
-    <!-- 6. Stencil -->
-    <div class="app-icon-wrap">
-      <div class="app-icon" style="background: linear-gradient(135deg, #EA580C, #C2410C);">
-        <div style="text-align:center;">
-          <div style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:900; letter-spacing:2px; color:#FFFFFF; position:relative; display:inline-block;">
-            OBRAFY
-            <div style="position:absolute; bottom:-3px; left:0; width:100%; height:3px; background:rgba(255,255,255,0.5); border-radius:2px;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="app-icon-label">6 — Stencil</div>
-    </div>
-  </div>
-
-  <!-- Favicon size -->
-  <div style="margin-top:48px; text-align:center;">
-    <h3>Favicon / tamano minimo (32px)</h3>
-    <div style="display:flex; gap:24px; justify-content:center; margin-top:16px; flex-wrap:wrap;">
-      <div class="app-icon-wrap">
-        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
-          <svg width="20" height="20" viewBox="0 0 76 76" fill="none">
-            <rect x="8" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
-            <rect x="29" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
-            <rect x="50" y="4" width="18" height="18" rx="4" fill="#FFFFFF"/>
-            <rect x="8" y="25" width="18" height="18" rx="4" fill="#FFFFFF"/>
-            <rect x="50" y="25" width="18" height="18" rx="4" fill="#FFFFFF"/>
-            <rect x="8" y="46" width="18" height="18" rx="4" fill="#FFFFFF"/>
-            <rect x="29" y="46" width="18" height="18" rx="4" fill="#FFFFFF"/>
-          </svg>
-        </div>
-        <div class="app-icon-label">1</div>
-      </div>
-      <div class="app-icon-wrap">
-        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
-          <svg width="24" height="20" viewBox="0 0 220 90" fill="none">
-            <rect x="4" y="4" width="212" height="82" rx="4" fill="none" stroke="#FFFFFF" stroke-width="6"/>
-            <text x="110" y="58" font-family="Inter,sans-serif" font-weight="900" font-size="38" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">OBRAFY</text>
-          </svg>
-        </div>
-        <div class="app-icon-label">2</div>
-      </div>
-      <div class="app-icon-wrap">
-        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
-          <div style="width:20px; height:20px; background:#FFFFFF; border-radius:5px; display:flex; align-items:center; justify-content:center; position:relative;">
-            <span style="font-family:'Poppins',sans-serif; font-size:12px; font-weight:800; color:#292524;">O</span>
-            <div style="position:absolute; top:2px; right:2px; width:5px; height:5px; background:#EA580C; border-radius:50%;"></div>
-          </div>
-        </div>
-        <div class="app-icon-label">3</div>
-      </div>
-      <div class="app-icon-wrap">
-        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
-          <div style="display:flex; flex-direction:column; gap:2px; align-items:flex-start;">
-            <div style="height:4px; width:16px; border-radius:2px; background:#FFFFFF;"></div>
-            <div style="height:4px; width:12px; border-radius:2px; background:rgba(255,255,255,0.6);"></div>
-            <div style="height:4px; width:20px; border-radius:2px; background:#FFFFFF;"></div>
-            <div style="height:4px; width:10px; border-radius:2px; background:rgba(255,255,255,0.5);"></div>
-          </div>
-        </div>
-        <div class="app-icon-label">4</div>
-      </div>
-      <div class="app-icon-wrap">
-        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
-          <div style="width:20px; height:20px; border:2px solid #FFFFFF; border-radius:5px; display:flex; align-items:center; justify-content:center;">
-            <span style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:900; color:#FFFFFF;">O</span>
-          </div>
-        </div>
-        <div class="app-icon-label">5</div>
-      </div>
-      <div class="app-icon-wrap">
-        <div class="app-icon" style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #EA580C, #C2410C);">
-          <span style="font-family:'Montserrat',sans-serif; font-size:9px; font-weight:900; letter-spacing:1px; color:#FFFFFF;">OBRAFY</span>
-        </div>
-        <div class="app-icon-label">6</div>
-      </div>
     </div>
   </div>
 </section>
@@ -625,40 +465,33 @@
 <!-- ============================================ -->
 <!-- RESUMEN                                      -->
 <!-- ============================================ -->
-<section class="slide cover">
-  <span class="slide-number">09</span>
-  <div class="slide-tag">Resumen</div>
-  <h2>6 favoritos, 1 marca</h2>
-  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:40px; max-width:900px; margin-top:40px;">
+<section class="cover">
+  <h1 style="font-size:40px; margin-bottom:8px;">5 favoritos, <span class="accent">1 marca</span></h1>
+  <div class="summary-grid">
     <div style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">🧱</div>
-      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">1 — Bloques Modulares</div>
-      <div style="font-size:14px; color:#888; line-height:1.5;">O de bloques, uno falta. <strong style="color:#ccc;">Minimalista, tech, escalable</strong>.</div>
+      <div style="font-size:40px; margin-bottom:12px;">📊</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:6px;">1 — Stacked Bars</div>
+      <div style="font-size:13px; color:#69697F; line-height:1.5;">Barras como capas. Progreso, ritmo, constructivo.</div>
     </div>
     <div style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">📋</div>
-      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">2 — Sello de Obra</div>
-      <div style="font-size:14px; color:#888; line-height:1.5;">Cuño de aprobacion. <strong style="color:#ccc;">Autoridad, validacion, profesional</strong>.</div>
+      <div style="font-size:40px; margin-bottom:12px;">📐</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:6px;">2 — Blueprint Grid</div>
+      <div style="font-size:13px; color:#69697F; line-height:1.5;">Plano tecnico. Precision, planificacion, orden.</div>
     </div>
     <div style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">🔶</div>
-      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">3 — Monogram Bold</div>
-      <div style="font-size:14px; color:#888; line-height:1.5;">Icono O con punto naranja. <strong style="color:#ccc;">Limpio, reconocible, app-ready</strong>.</div>
+      <div style="font-size:40px; margin-bottom:12px;">🔩</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:6px;">3 — Stencil Industrial</div>
+      <div style="font-size:13px; color:#69697F; line-height:1.5;">Letras pesadas + barra naranja. Industrial, contundente.</div>
     </div>
     <div style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">📊</div>
-      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">4 — Stacked Bars</div>
-      <div style="font-size:14px; color:#888; line-height:1.5;">Barras como capas de obra. <strong style="color:#ccc;">Progreso, ritmo, constructivo</strong>.</div>
+      <div style="font-size:40px; margin-bottom:12px;">🧱</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:6px;">4 — Bloques Modulares</div>
+      <div style="font-size:13px; color:#69697F; line-height:1.5;">O de bloques, uno falta. Minimalista, tech, escalable.</div>
     </div>
     <div style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">📐</div>
-      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">5 — Blueprint Grid</div>
-      <div style="font-size:14px; color:#888; line-height:1.5;">Plano tecnico con O al centro. <strong style="color:#ccc;">Precision, planificacion, orden</strong>.</div>
-    </div>
-    <div style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">🔩</div>
-      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">6 — Stencil Industrial</div>
-      <div style="font-size:14px; color:#888; line-height:1.5;">Letras pesadas + barra naranja. <strong style="color:#ccc;">Industrial, contundente, oficio</strong>.</div>
+      <div style="font-size:40px; margin-bottom:12px;">📋</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:6px;">5 — Sello de Obra</div>
+      <div style="font-size:13px; color:#69697F; line-height:1.5;">Cuño de aprobacion. Autoridad, validacion, profesional.</div>
     </div>
   </div>
 </section>
