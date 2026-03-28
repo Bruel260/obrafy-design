@@ -126,11 +126,23 @@
   </div>
 </div>
 
+<!-- COMMENT -->
+<div class="screen" id="comment">
+  <div class="intro-title" style="font-size:28px;">Algun<br><span class="intro-accent">comentario?</span></div>
+  <div class="intro-desc" style="margin-bottom:24px;">Opcional. Si quieres dejar una nota sobre los logos, tu favorito, o lo que sea.</div>
+  <textarea id="comment-input" placeholder="Escribe aqui..." style="width:100%; max-width:380px; min-height:120px; background:#12122a; border:1px solid #282848; border-radius:14px; color:#fff; font-family:'Inter',sans-serif; font-size:15px; padding:16px; resize:none; outline:none;"></textarea>
+  <div style="display:flex; gap:12px; margin-top:20px;">
+    <button class="results-btn secondary" onclick="skipComment()">Saltar</button>
+    <button class="intro-btn" style="padding:14px 36px; font-size:16px;" onclick="saveComment()">Ver resultados</button>
+  </div>
+</div>
+
 <!-- RESULTS -->
 <div class="screen" id="results">
   <div class="results-title">Ranking</div>
   <div class="results-sub" id="results-sub"></div>
   <div class="results-list" id="results-list"></div>
+  <div id="comments-section" style="width:100%; max-width:380px; margin-top:24px;"></div>
   <div class="results-footer">
     <button class="results-btn secondary" onclick="startVoting()">Votar otra vez</button>
     <button class="results-btn primary" onclick="shareResults()">Copiar resultado</button>
@@ -309,7 +321,9 @@ function nextLogo() {
     currentIndex++;
     if (currentIndex >= LOGOS.length) {
       saveMyVotes();
-      showResults();
+      showScreen('comment');
+      document.getElementById('comment-input').value = '';
+      return;
     } else {
       renderLogo();
     }
@@ -368,6 +382,23 @@ function showResults() {
       bar.style.width = bar.dataset.w;
     });
   }, 100);
+
+  // Comments
+  const comments = votes._comments || [];
+  const cs = document.getElementById('comments-section');
+  if (comments.length > 0) {
+    cs.innerHTML = `
+      <div style="font-size:14px; font-weight:700; color:#69697F; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Comentarios</div>
+      ${comments.map(c => `
+        <div style="background:#12122a; border-radius:12px; padding:14px 16px; margin-bottom:8px;">
+          <div style="font-size:14px; color:#ddd; line-height:1.5;">${c.text.replace(/</g,'&lt;')}</div>
+          <div style="font-size:11px; color:#555; margin-top:6px;">${c.date}</div>
+        </div>
+      `).join('')}
+    `;
+  } else {
+    cs.innerHTML = '';
+  }
 }
 
 function shareResults() {
@@ -379,9 +410,13 @@ function shareResults() {
     return { name: logo.name, avg };
   }).sort((a, b) => b.avg - a.avg);
 
-  const text = `Logo Obrafy — ${totalVoters} votos\n` + ranked.map((r, i) =>
+  const comments = votes._comments || [];
+  let text = `Logo Obrafy — ${totalVoters} votos\n` + ranked.map((r, i) =>
     `${i + 1}. ${r.name}: ${r.avg.toFixed(1)}/5`
   ).join('\n');
+  if (comments.length > 0) {
+    text += '\n\nComentarios:\n' + comments.map(c => `- "${c.text}"`).join('\n');
+  }
 
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
@@ -390,6 +425,21 @@ function shareResults() {
       setTimeout(() => btn.textContent = 'Copiar resultado', 2000);
     });
   }
+}
+
+function saveComment() {
+  const text = document.getElementById('comment-input').value.trim();
+  if (text) {
+    const votes = getVotes();
+    if (!votes._comments) votes._comments = [];
+    votes._comments.push({ text, date: new Date().toLocaleString('es-ES') });
+    saveVotes(votes);
+  }
+  showResults();
+}
+
+function skipComment() {
+  showResults();
 }
 
 // Swipe support
