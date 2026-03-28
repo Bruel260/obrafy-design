@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Obrafy — Vota el logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    overflow: hidden;
+    height: 100dvh;
+    width: 100vw;
+    touch-action: pan-y;
+  }
+
+  /* Screens */
+  .screen { display:none; flex-direction:column; align-items:center; justify-content:center; height:100dvh; width:100vw; padding:32px 24px; position:absolute; top:0; left:0; }
+  .screen.active { display:flex; }
+
+  /* Intro */
+  .intro-badge { padding:6px 16px; background:#1a1a2e; border:1px solid #282848; border-radius:999px; font-size:12px; color:#69697F; margin-bottom:32px; }
+  .intro-title { font-size:36px; font-weight:800; text-align:center; line-height:1.2; margin-bottom:16px; }
+  .intro-accent { color:#FD893A; }
+  .intro-desc { font-size:16px; color:#888; text-align:center; max-width:320px; line-height:1.6; margin-bottom:40px; }
+  .intro-btn { background:#FD893A; color:#fff; border:none; padding:16px 48px; border-radius:14px; font-size:18px; font-weight:700; font-family:'Inter',sans-serif; cursor:pointer; transition:transform 0.15s; }
+  .intro-btn:active { transform:scale(0.96); }
+  .intro-voters { margin-top:24px; font-size:13px; color:#555; }
+  .intro-voters span { color:#FD893A; font-weight:700; }
+
+  /* Vote screen */
+  .vote-screen { padding:0; justify-content:flex-start; }
+  .vote-progress { width:100%; display:flex; gap:6px; padding:16px 20px 0; }
+  .vote-progress .pip { flex:1; height:4px; border-radius:2px; background:#1a1a2e; transition:background 0.3s; }
+  .vote-progress .pip.done { background:#FD893A; }
+  .vote-progress .pip.current { background:#FD893A; opacity:0.5; }
+
+  .vote-card-area { flex:1; width:100%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .vote-card { width:calc(100% - 40px); max-width:400px; background:#12122a; border-radius:24px; padding:48px 32px; display:flex; flex-direction:column; align-items:center; gap:20px; transition:transform 0.3s ease, opacity 0.3s ease; }
+  .vote-card.exit-left { transform:translateX(-120%); opacity:0; }
+  .vote-card.exit-right { transform:translateX(120%); opacity:0; }
+  .vote-card.enter { transform:translateX(0); opacity:1; }
+
+  .vote-name { font-size:14px; font-weight:600; color:#69697F; text-transform:uppercase; letter-spacing:2px; }
+
+  /* Stars */
+  .stars-area { padding:20px 20px 32px; width:100%; display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .stars { display:flex; gap:8px; }
+  .star { width:52px; height:52px; border-radius:14px; border:2px solid #282848; background:transparent; display:flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer; transition:all 0.15s; }
+  .star.active { border-color:#FD893A; background:rgba(253,137,58,0.15); transform:scale(1.1); }
+  .star:active { transform:scale(0.9); }
+  .stars-label { font-size:13px; color:#555; height:18px; }
+
+  .vote-next { background:#FD893A; color:#fff; border:none; padding:14px 40px; border-radius:12px; font-size:16px; font-weight:700; font-family:'Inter',sans-serif; cursor:pointer; opacity:0.3; pointer-events:none; transition:all 0.2s; }
+  .vote-next.enabled { opacity:1; pointer-events:auto; }
+  .vote-next:active { transform:scale(0.96); }
+
+  /* Logo renders inside cards */
+  .logo-render { min-height:120px; display:flex; align-items:center; justify-content:center; }
+
+  /* Stacked Bars */
+  .bars-icon { display:flex; flex-direction:column; gap:5px; align-items:flex-start; }
+  .bars-icon .b { height:10px; border-radius:5px; }
+  .bars-text { font-family:'Inter',sans-serif; font-size:30px; font-weight:800; color:#fff; letter-spacing:-0.5px; }
+  .bars-text .fy { color:#FD893A; }
+
+  /* Blueprint */
+  .bp-icon { width:72px; height:72px; border:3px solid #9393A3; border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .bp-icon::before { content:''; position:absolute; top:50%; left:0; right:0; height:2px; background:#9393A3; opacity:0.3; }
+  .bp-icon::after { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:#9393A3; opacity:0.3; }
+  .bp-icon span { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:900; color:#FD893A; z-index:1; }
+  .bp-text { font-family:'Montserrat',sans-serif; font-size:30px; font-weight:700; }
+
+  /* Stencil */
+  .st-wordmark { font-family:'Montserrat',sans-serif; font-size:42px; font-weight:900; letter-spacing:6px; text-transform:uppercase; position:relative; display:inline-block; color:#fff; }
+  .st-underbar { position:absolute; bottom:-6px; left:0; width:100%; height:5px; background:#FD893A; border-radius:3px; }
+  .st-sub { font-family:'Inter',sans-serif; font-size:12px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:#9393A3; margin-top:14px; text-align:center; }
+
+  /* Results */
+  .results-title { font-size:28px; font-weight:800; margin-bottom:8px; text-align:center; }
+  .results-sub { font-size:14px; color:#888; margin-bottom:32px; text-align:center; }
+  .results-list { width:100%; max-width:380px; display:flex; flex-direction:column; gap:12px; }
+  .result-row { display:flex; align-items:center; gap:14px; background:#12122a; border-radius:16px; padding:16px 20px; }
+  .result-rank { font-size:24px; font-weight:900; color:#FD893A; min-width:32px; text-align:center; }
+  .result-info { flex:1; }
+  .result-name { font-size:16px; font-weight:700; margin-bottom:4px; }
+  .result-bar-bg { width:100%; height:8px; background:#1a1a2e; border-radius:4px; overflow:hidden; }
+  .result-bar-fill { height:100%; background:#FD893A; border-radius:4px; transition:width 0.8s ease; }
+  .result-score { font-size:20px; font-weight:800; color:#FD893A; min-width:40px; text-align:right; }
+  .result-votes { font-size:11px; color:#555; text-align:right; }
+
+  .results-footer { margin-top:32px; display:flex; gap:12px; }
+  .results-btn { padding:12px 28px; border-radius:12px; font-size:14px; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; border:none; transition:transform 0.15s; }
+  .results-btn:active { transform:scale(0.96); }
+  .results-btn.primary { background:#FD893A; color:#fff; }
+  .results-btn.secondary { background:#1a1a2e; color:#888; border:1px solid #282848; }
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div class="screen active" id="intro">
+  <div class="intro-badge">Obrafy &mdash; Marzo 2026</div>
+  <div class="intro-title">Elige el<br><span class="intro-accent">logo de Obrafy</span></div>
+  <div class="intro-desc">Veras 5 propuestas de logo. Puntua cada una de 1 a 5 estrellas. Al final veras el ranking con los votos de todos.</div>
+  <button class="intro-btn" onclick="startVoting()">Empezar a votar</button>
+  <div class="intro-voters">Ya han votado <span id="voter-count">0</span> personas</div>
+</div>
+
+<!-- VOTE -->
+<div class="screen" id="vote">
+  <div class="vote-progress" id="progress"></div>
+  <div class="vote-card-area">
+    <div class="vote-card" id="card">
+      <div class="vote-name" id="logo-name"></div>
+      <div class="logo-render" id="logo-render"></div>
+    </div>
+  </div>
+  <div class="stars-area">
+    <div class="stars" id="stars"></div>
+    <div class="stars-label" id="stars-label"></div>
+    <button class="vote-next" id="next-btn" onclick="nextLogo()">Siguiente</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="screen" id="results">
+  <div class="results-title">Ranking</div>
+  <div class="results-sub" id="results-sub"></div>
+  <div class="results-list" id="results-list"></div>
+  <div class="results-footer">
+    <button class="results-btn secondary" onclick="startVoting()">Votar otra vez</button>
+    <button class="results-btn primary" onclick="shareResults()">Copiar resultado</button>
+  </div>
+</div>
+
+<script>
+const LOGOS = [
+  {
+    id: 'stacked-bars',
+    name: 'Stacked Bars',
+    render: () => `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <div class="bars-icon">
+          <div class="b" style="width:50px;background:#9393A3;"></div>
+          <div class="b" style="width:40px;background:#BEBEC8;"></div>
+          <div class="b" style="width:60px;background:#FD893A;"></div>
+          <div class="b" style="width:30px;background:#39B29B;"></div>
+        </div>
+        <div class="bars-text">obra<span class="fy">fy</span></div>
+      </div>`
+  },
+  {
+    id: 'blueprint-grid',
+    name: 'Blueprint Grid',
+    render: () => `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <div class="bp-icon"><span>O</span></div>
+        <div class="bp-text"><span style="color:#fff;">Obra</span><span style="color:#FD893A;">fy</span></div>
+      </div>`
+  },
+  {
+    id: 'stencil-industrial',
+    name: 'Stencil Industrial',
+    render: () => `
+      <div style="text-align:center;">
+        <div class="st-wordmark">OBRAFY<div class="st-underbar"></div></div>
+        <div class="st-sub">GESTION DE OBRAS</div>
+      </div>`
+  },
+  {
+    id: 'bloques-modulares',
+    name: 'Bloques Modulares',
+    render: () => `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+          <rect x="8" y="4" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="29" y="4" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="50" y="4" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="8" y="25" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="50" y="25" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="8" y="46" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="29" y="46" width="18" height="18" rx="4" fill="#FB923C"/>
+          <rect x="50" y="46" width="18" height="18" rx="4" fill="none" stroke="#FB923C" stroke-width="2" stroke-dasharray="4 3" opacity="0.4"/>
+          <path d="M56 58 L62 55 L62 61 Z" fill="#FB923C" opacity="0.4"/>
+        </svg>
+        <div style="font-family:'Inter',sans-serif;font-size:36px;font-weight:800;color:#FAFAF9;letter-spacing:-1px;"><span style="color:#FB923C;">O</span>bra<span style="color:#FB923C;">fy</span></div>
+      </div>`
+  },
+  {
+    id: 'sello-de-obra',
+    name: 'Sello de Obra',
+    render: () => `
+      <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
+        <rect x="4" y="4" width="212" height="82" rx="4" fill="none" stroke="#FAFAF9" stroke-width="4"/>
+        <rect x="12" y="12" width="196" height="66" rx="2" fill="none" stroke="#FAFAF9" stroke-width="1.5"/>
+        <line x1="20" y1="24" x2="200" y2="24" stroke="#FD893A" stroke-width="2"/>
+        <line x1="20" y1="66" x2="200" y2="66" stroke="#FD893A" stroke-width="2"/>
+        <text x="110" y="52" font-family="Inter,sans-serif" font-weight="900" font-size="30" fill="#FAFAF9" text-anchor="middle" letter-spacing="8">OBRAFY</text>
+      </svg>`
+  }
+];
+
+const STAR_LABELS = ['', 'No me gusta', 'Flojillo', 'Esta bien', 'Me gusta', 'Me encanta'];
+const STORAGE_KEY = 'obrafy_votes';
+
+let currentIndex = 0;
+let currentRating = 0;
+let myVotes = {};
+
+function getVotes() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch { return {}; }
+}
+
+function saveVotes(votes) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(votes));
+}
+
+function getVoterCount() {
+  const votes = getVotes();
+  // Count unique sessions
+  return votes._sessions ? votes._sessions.length : 0;
+}
+
+function init() {
+  document.getElementById('voter-count').textContent = getVoterCount();
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startVoting() {
+  currentIndex = 0;
+  currentRating = 0;
+  myVotes = {};
+  showScreen('vote');
+  renderLogo();
+}
+
+function renderLogo() {
+  const logo = LOGOS[currentIndex];
+
+  // Progress pips
+  const prog = document.getElementById('progress');
+  prog.innerHTML = LOGOS.map((_, i) =>
+    `<div class="pip ${i < currentIndex ? 'done' : ''} ${i === currentIndex ? 'current' : ''}"></div>`
+  ).join('');
+
+  // Card
+  document.getElementById('logo-name').textContent = logo.name;
+  document.getElementById('logo-render').innerHTML = logo.render();
+
+  // Stars
+  currentRating = 0;
+  renderStars();
+  document.getElementById('stars-label').textContent = '';
+
+  const btn = document.getElementById('next-btn');
+  btn.classList.remove('enabled');
+  btn.textContent = currentIndex === LOGOS.length - 1 ? 'Ver resultados' : 'Siguiente';
+
+  // Animate card in
+  const card = document.getElementById('card');
+  card.classList.remove('enter', 'exit-left', 'exit-right');
+  card.style.transform = 'translateX(60px)';
+  card.style.opacity = '0';
+  requestAnimationFrame(() => {
+    card.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+    card.style.transform = 'translateX(0)';
+    card.style.opacity = '1';
+  });
+}
+
+function renderStars() {
+  const container = document.getElementById('stars');
+  container.innerHTML = '';
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement('div');
+    star.className = 'star' + (i <= currentRating ? ' active' : '');
+    star.textContent = i <= currentRating ? '★' : '☆';
+    star.onclick = () => rateLogo(i);
+    container.appendChild(star);
+  }
+}
+
+function rateLogo(rating) {
+  currentRating = rating;
+  myVotes[LOGOS[currentIndex].id] = rating;
+  renderStars();
+  document.getElementById('stars-label').textContent = STAR_LABELS[rating];
+  document.getElementById('next-btn').classList.add('enabled');
+}
+
+function nextLogo() {
+  if (!currentRating) return;
+
+  const card = document.getElementById('card');
+  card.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+  card.style.transform = 'translateX(-100px)';
+  card.style.opacity = '0';
+
+  setTimeout(() => {
+    currentIndex++;
+    if (currentIndex >= LOGOS.length) {
+      saveMyVotes();
+      showResults();
+    } else {
+      renderLogo();
+    }
+  }, 250);
+}
+
+function saveMyVotes() {
+  const votes = getVotes();
+  const sessionId = Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+
+  if (!votes._sessions) votes._sessions = [];
+  votes._sessions.push(sessionId);
+
+  LOGOS.forEach(logo => {
+    if (!votes[logo.id]) votes[logo.id] = [];
+    votes[logo.id].push(myVotes[logo.id] || 0);
+  });
+
+  saveVotes(votes);
+}
+
+function showResults() {
+  showScreen('results');
+  const votes = getVotes();
+  const totalVoters = votes._sessions ? votes._sessions.length : 0;
+
+  document.getElementById('results-sub').textContent = totalVoters + (totalVoters === 1 ? ' voto' : ' votos');
+
+  // Calculate averages and sort
+  const ranked = LOGOS.map(logo => {
+    const arr = votes[logo.id] || [];
+    const avg = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
+    return { ...logo, avg, votes: arr.length };
+  }).sort((a, b) => b.avg - a.avg);
+
+  const maxAvg = ranked[0] ? ranked[0].avg : 5;
+
+  const list = document.getElementById('results-list');
+  list.innerHTML = ranked.map((r, i) => `
+    <div class="result-row">
+      <div class="result-rank">${i + 1}</div>
+      <div class="result-info">
+        <div class="result-name">${r.name}</div>
+        <div class="result-bar-bg"><div class="result-bar-fill" style="width:0%" data-w="${(r.avg / 5 * 100).toFixed(0)}%"></div></div>
+      </div>
+      <div style="text-align:right;">
+        <div class="result-score">${r.avg.toFixed(1)}</div>
+        <div class="result-votes">${r.votes} voto${r.votes !== 1 ? 's' : ''}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Animate bars
+  setTimeout(() => {
+    list.querySelectorAll('.result-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.w;
+    });
+  }, 100);
+}
+
+function shareResults() {
+  const votes = getVotes();
+  const totalVoters = votes._sessions ? votes._sessions.length : 0;
+  const ranked = LOGOS.map(logo => {
+    const arr = votes[logo.id] || [];
+    const avg = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
+    return { name: logo.name, avg };
+  }).sort((a, b) => b.avg - a.avg);
+
+  const text = `Logo Obrafy — ${totalVoters} votos\n` + ranked.map((r, i) =>
+    `${i + 1}. ${r.name}: ${r.avg.toFixed(1)}/5`
+  ).join('\n');
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.results-btn.primary');
+      btn.textContent = 'Copiado!';
+      setTimeout(() => btn.textContent = 'Copiar resultado', 2000);
+    });
+  }
+}
+
+// Swipe support
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (diff > 80 && currentRating > 0 && document.getElementById('vote').classList.contains('active')) {
+    nextLogo();
+  }
+}, { passive: true });
+
+init();
+</script>
+</body>
+</html>
