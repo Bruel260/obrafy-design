@@ -217,29 +217,34 @@ const LOGOS = [
 ];
 
 const STAR_LABELS = ['', 'No me gusta', 'Flojillo', 'Esta bien', 'Me gusta', 'Me encanta'];
-const STORAGE_KEY = 'obrafy_votes';
+const BLOB_ID = '019d35fa-4517-755b-beac-f096c94bc9ba';
+const BLOB_URL = `https://jsonblob.com/api/jsonBlob/${BLOB_ID}`;
 
 let currentIndex = 0;
 let currentRating = 0;
 let myVotes = {};
+let cloudData = { sessions: [], votes: {}, comments: [] };
 
-function getVotes() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-  catch { return {}; }
+async function fetchCloud() {
+  try {
+    const r = await fetch(BLOB_URL, { headers: { 'Accept': 'application/json' } });
+    if (r.ok) cloudData = await r.json();
+  } catch (e) { console.warn('Cloud fetch failed, using local'); }
 }
 
-function saveVotes(votes) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(votes));
+async function saveCloud() {
+  try {
+    await fetch(BLOB_URL, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(cloudData)
+    });
+  } catch (e) { console.warn('Cloud save failed'); }
 }
 
-function getVoterCount() {
-  const votes = getVotes();
-  // Count unique sessions
-  return votes._sessions ? votes._sessions.length : 0;
-}
-
-function init() {
-  document.getElementById('voter-count').textContent = getVoterCount();
+async function init() {
+  await fetchCloud();
+  document.getElementById('voter-count').textContent = cloudData.sessions.length;
 }
 
 function showScreen(id) {
@@ -317,10 +322,10 @@ function nextLogo() {
   card.style.transform = 'translateX(-100px)';
   card.style.opacity = '0';
 
-  setTimeout(() => {
+  setTimeout(async () => {
     currentIndex++;
     if (currentIndex >= LOGOS.length) {
-      saveMyVotes();
+      await saveMyVotes();
       showScreen('comment');
       document.getElementById('comment-input').value = '';
       return;
@@ -330,31 +335,29 @@ function nextLogo() {
   }, 250);
 }
 
-function saveMyVotes() {
-  const votes = getVotes();
+async function saveMyVotes() {
+  await fetchCloud(); // get latest before writing
   const sessionId = Date.now() + '_' + Math.random().toString(36).substr(2, 6);
-
-  if (!votes._sessions) votes._sessions = [];
-  votes._sessions.push(sessionId);
+  cloudData.sessions.push(sessionId);
 
   LOGOS.forEach(logo => {
-    if (!votes[logo.id]) votes[logo.id] = [];
-    votes[logo.id].push(myVotes[logo.id] || 0);
+    if (!cloudData.votes[logo.id]) cloudData.votes[logo.id] = [];
+    cloudData.votes[logo.id].push(myVotes[logo.id] || 0);
   });
 
-  saveVotes(votes);
+  await saveCloud();
 }
 
-function showResults() {
+async function showResults() {
+  await fetchCloud(); // get latest from all voters
   showScreen('results');
-  const votes = getVotes();
-  const totalVoters = votes._sessions ? votes._sessions.length : 0;
+  const totalVoters = cloudData.sessions.length;
 
   document.getElementById('results-sub').textContent = totalVoters + (totalVoters === 1 ? ' voto' : ' votos');
 
   // Calculate averages and sort
   const ranked = LOGOS.map(logo => {
-    const arr = votes[logo.id] || [];
+    const arr = cloudData.votes[logo.id] || [];
     const avg = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
     return { ...logo, avg, votes: arr.length };
   }).sort((a, b) => b.avg - a.avg);
@@ -384,7 +387,7 @@ function showResults() {
   }, 100);
 
   // Comments
-  const comments = votes._comments || [];
+  const comments = cloudData.comments || [];
   const cs = document.getElementById('comments-section');
   if (comments.length > 0) {
     cs.innerHTML = `
@@ -402,15 +405,14 @@ function showResults() {
 }
 
 function shareResults() {
-  const votes = getVotes();
-  const totalVoters = votes._sessions ? votes._sessions.length : 0;
+  const totalVoters = cloudData.sessions.length;
   const ranked = LOGOS.map(logo => {
-    const arr = votes[logo.id] || [];
+    const arr = cloudData.votes[logo.id] || [];
     const avg = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
     return { name: logo.name, avg };
   }).sort((a, b) => b.avg - a.avg);
 
-  const comments = votes._comments || [];
+  const comments = cloudData.comments || [];
   let text = `Logo Obrafy — ${totalVoters} votos\n` + ranked.map((r, i) =>
     `${i + 1}. ${r.name}: ${r.avg.toFixed(1)}/5`
   ).join('\n');
@@ -427,19 +429,19 @@ function shareResults() {
   }
 }
 
-function saveComment() {
+async function saveComment() {
   const text = document.getElementById('comment-input').value.trim();
   if (text) {
-    const votes = getVotes();
-    if (!votes._comments) votes._comments = [];
-    votes._comments.push({ text, date: new Date().toLocaleString('es-ES') });
-    saveVotes(votes);
+    await fetchCloud();
+    if (!cloudData.comments) cloudData.comments = [];
+    cloudData.comments.push({ text, date: new Date().toLocaleString('es-ES') });
+    await saveCloud();
   }
-  showResults();
+  await showResults();
 }
 
-function skipComment() {
-  showResults();
+async function skipComment() {
+  await showResults();
 }
 
 // Swipe support
